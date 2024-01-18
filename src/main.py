@@ -24,12 +24,13 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 2
+    valor_maximo = 3
     opcion = -1
     while opcion != 0:
         print("MENU:")
         print("[1] Crear Juego.")
         print("[2] Listar Juegos")
+        print("[3] Listar Juegos por generos")
         # Opciones
         print("[0] Salir")
         try:
@@ -46,6 +47,9 @@ def menu():
                 # Funcion Crear juego
             elif opcion == 2:
                 print("Opcion 2: Listar Juegos\n")
+                # Funcion Listar Juegos
+            elif opcion == 3:
+                print("Opcion 2: Listar Juegos por genero\n")
                 # Funcion Listar Juegos
 
 
