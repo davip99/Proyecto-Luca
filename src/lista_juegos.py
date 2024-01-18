@@ -1,24 +1,35 @@
-class lista:
-    def __init__(self):
-        self.items = []
+csv = "C:/Users/jorge/Downloads/vgsales.csv"
 
-    def agregar(self, item):
-        self.items.append(item)
+lista_csv = []
 
-    def remover(self, item):
-        self.items.remove(item)
-        
-    def tamano(self):
-        return len(self.items)
 
-def leer_csv_y_agregar_a_lista(archivo, lista):
-    juegos = open(archivo, "r")
-    juegos.readline()
-    for fila in juegos:
-        juego = fila.strip().split(",")
-        lista.agregar(juego)
-    juegos.close()
+class Lista_Juegos:
 
-mi_lista = lista()
-leer_csv_y_agregar_a_lista("C:/Users/jorge/Downloads/vgsales.csv", mi_lista)
+    @staticmethod
+    def convert_csv_list():
+        ''' Funcion convertir csv a lista
+            Transforma el csv a una lista
+            Devuelve la lista
+        '''
 
+        with open(csv, newline='', encoding='utf-8') as archivo_csv:
+            for fila in archivo_csv:
+                lista_csv.append(fila)
+
+        return lista_csv
+
+    def read_list():
+        '''
+        Funcion para leer la lista de juegos e imrimirlos por pantalla
+        '''
+        separador = ","
+        # imprime 5 valores, cambiarlo al final
+        for juego in lista_csv[:5]:
+            linea = juego.split(separador)
+            linea_formateada = " | ".join(linea)
+            print(linea_formateada)
+
+        return lista_csv
+
+
+mi_lista = Lista_Juegos.convert_csv_list()
