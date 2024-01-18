@@ -13,7 +13,7 @@ def control(action):
         for i in select_genre:
             print(i, end=" ")
         genre = input("\nSelecciona un genero para filtrar: ")
-        filtro_genero = milista.filter_genre(genre)
+        milista.filter_genre(genre)
 
 control(3)
     
