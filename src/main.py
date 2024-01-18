@@ -1,3 +1,5 @@
+import control as ct
+
 def introducir_int(tetxo):
     """
     Introducir un numero entero y devolverlo
@@ -48,6 +50,7 @@ def menu():
             elif opcion == 2:
                 print("Opcion 2: Listar Juegos\n")
                 # Funcion Listar Juegos
+                ct.control(2)
             elif opcion == 3:
                 print("Opcion 2: Listar Juegos por genero\n")
                 # Funcion Listar Juegos
