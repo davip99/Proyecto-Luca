@@ -7,22 +7,18 @@ class lista:
 
     def remover(self, item):
         self.items.remove(item)
-
-    def obtener(self, index):
-        return self.items[index]
-
+        
     def tamano(self):
         return len(self.items)
 
-def leer_csv_y_agregar_a_lista(file_name, lista):
-    juegos = open(file_name, "r")
+def leer_csv_y_agregar_a_lista(archivo, lista):
+    juegos = open(archivo, "r")
     juegos.readline()
-    for row in juegos:
-        values = row.strip().split(",")
-        lista.agregar(values)
+    for fila in juegos:
+        juego = fila.strip().split(",")
+        lista.agregar(juego)
     juegos.close()
 
 mi_lista = lista()
 leer_csv_y_agregar_a_lista("C:/Users/jorge/Downloads/vgsales.csv", mi_lista)
 
-print(mi_lista.obtener(0))
