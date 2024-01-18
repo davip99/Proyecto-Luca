@@ -1,4 +1,4 @@
-import Juegos
+from Juegos import Juegos
 import csv
 
 
@@ -18,7 +18,7 @@ class Lista_Juegos:
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos.Juegos(rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+                juego = Juegos(rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
                 lista_csv.append(juego)
         return lista_csv
 
