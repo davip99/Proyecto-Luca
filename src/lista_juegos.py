@@ -1,4 +1,4 @@
-csv = "C:/Users/jorge/Downloads/vgsales.csv"
+csv = "../src/csv/vgsales.csv"
 
 lista_csv = []
 
