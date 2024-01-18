@@ -14,4 +14,4 @@ class Juegos:
         self.global_sales = global_sales
 
     def __str__(self):
-        return f"Rank: {self.rank}, Name: {self.name}, Platform: {self.platform}, Year: {self.year}, Genre: {self.genre}, Publisher: {self.publisher}, NA_Sales: {self.na_Sales}, EU_sales: {self.eu_sales}, JP_sales: {self.jp_sales}, Other_sales: {self.other_sales}, Global_sales: {self.global_sales}"
+        return f"Rank: {self.rank},\n Name: {self.name},\n Platform: {self.platform},\n Year: {self.year},\n Genre: {self.genre},\n Publisher: {self.publisher},\n NA_Sales: {self.na_Sales},\n EU_sales: {self.eu_sales},\n JP_sales: {self.jp_sales},\n Other_sales: {self.other_sales},\n Global_sales: {self.global_sales}\n"
