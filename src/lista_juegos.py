@@ -1,18 +1,28 @@
-
 from Juegos import Juegos
 import csv
 import os
 
 class Lista_Juegos:
     def __init__(self, csv_path):
+        """
+        Constructor de la clase Lista_jeugos.
+
+        Args:
+            csv_path (str): string de la ruta del csv.
+        """
         self.lista_csv = Lista_Juegos.convert_csv_list(csv_path)
 
     @staticmethod
     def convert_csv_list(csv_path):
-        ''' Funcion convertir csv a lista
-            Transforma el csv a una lista
-            Devuelve la lista
-        '''
+        """
+        Convertir de csv a lista.
+
+        Args:
+            csv_path (str): Direccion del csv.
+
+        Returns:
+            list: Lista de los jeugos del csv.
+        """
         lista_csv = []
         with open(csv_path, newline='', encoding='utf-8') as csv_file:
             csv_reader = csv.reader(csv_file)
@@ -24,9 +34,9 @@ class Lista_Juegos:
         return lista_csv
 
     def read_list(self):
-        '''
-        Funcion para leer la lista de juegos e imrimirlos por pantalla
-        '''
+        """
+        Lee la lista de juegos.
+        """
         # imprime 5 valores, cambiarlo al final
         for juego in self.lista_csv[:10]:
             print(juego)
