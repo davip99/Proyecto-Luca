@@ -1,4 +1,3 @@
-
 from Juegos import Juegos
 import csv
 import os
@@ -28,7 +27,7 @@ class Lista_Juegos:
         Funcion para leer la lista de juegos e imrimirlos por pantalla
         '''
         # imprime 5 valores, cambiarlo al final
-        for juego in self.lista_csv[:10]:
+        for juego in self.lista_csv[:655]:
             print(juego)
 
     def genero(self):
@@ -43,75 +42,45 @@ class Lista_Juegos:
             if genero == juego.genre:
                 print(juego)
 
-
-
-
-
-def load_existing_ranks():
-    
-    # Construir la ruta completa al archivo CSV
-    #csv_file_path = 'C:\\Users\\carma\\Visual Studio Code\\Proyecto\\Proyecto-Luca\\src\\csv\\vgsales.csv'
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    os.chdir(script_directory)
-    
-    
-    csv_folder = 'csv'  # Ruta relativa desde el directorio actual del script
-    csv_file_name = 'vgsales.csv'
-    csv_file_path = os.path.join(csv_folder, csv_file_name)
-
-
-
-    # Función para cargar la lista de rangos desde un archivo CSV
-    existing_ranks = []
-    with open(csv_file_path, 'r', newline='') as file:
-        reader = csv.reader(file)
-        next(reader)
-        for row in reader:
-            try:
-                rank = int(row[0])  
-                existing_ranks.append(rank)
-            except ValueError:
-                pass  # Ignoramos las filas que no contienen números en la primera columna
-    return existing_ranks
-
-
-
-
-
-
-def create_game(existing_ranks):
-    
-    rank = 1
-    while rank in existing_ranks:
-        rank += 1
+    def load_existing_ranks():
         
-    # Solicitar al usuario que ingrese los valores para los campos
-    name = input("Ingrese el nombre del juego: ")
-    platform = input("Ingrese la plataforma del juego: ")
-    year = input("Ingrese el año de lanzamiento del juego: ")
-    genre = input("Ingrese el género del juego: ")
-    publisher = input("Ingrese el editor del juego: ")
-    na_sales = input("Ingrese las ventas en América del Norte: ")
-    eu_sales = input("Ingrese las ventas en Europa: ")
-    jp_sales = input("Ingrese las ventas en Japón: ")
-    other_sales = input("Ingrese las ventas en otras regiones: ")
-    global_sales = input("Ingrese las ventas globales: ")
-    
-    
-    if not name:
-        print("Error: El nombre del juego es obligatorio.")
-        return False
-    
-    if year and not year.isdigit():
-        print("Error: El año de lanzamiento debe ser un número entero.")
-        return False
-    
-    
-    game_created = True
-    print(f"Juego '{name}' creado con éxito. Rango asignado automáticamente: {rank}")
-    
-    # Devolver el resultado como un booleano
-    return game_created
+        # Construir la ruta completa al archivo CSV
+        #csv_file_path = 'C:\\Users\\carma\\Visual Studio Code\\Proyecto\\Proyecto-Luca\\src\\csv\\vgsales.csv'
+        script_directory = os.path.dirname(os.path.abspath(__file__))
+        os.chdir(script_directory)
+        
+        csv_folder = 'csv'  # Ruta relativa desde el directorio actual del script
+        csv_file_name = 'vgsales.csv'
+        csv_file_path = os.path.join(csv_folder, csv_file_name)
+
+        # Función para cargar la lista de rangos desde un archivo CSV
+        existing_ranks = []
+        with open(csv_file_path, 'r', newline='') as file:
+            reader = csv.reader(file)
+            next(reader)
+            for row in reader:
+                try:
+                    rank = int(row[0])  
+                    existing_ranks.append(rank)
+                except ValueError:
+                    pass  # Ignoramos las filas que no contienen números en la primera columna
+        return existing_ranks
+
+    def add_game(self):
+        new_game = Juegos.create_game()
+        Lista_Juegos.load_existing_ranks()
+        rank = 1
+        while rank in Lista_Juegos.load_existing_ranks():
+            rank +=1
+        new_game.rank = rank
+        print(new_game)
+        guardar = input("Quieres guardar el juego(Y/N): ")
+        if guardar == "Y":
+            self.lista_csv.insert(rank-1, new_game)
+        else:
+            print("Juego no guardado")
+        return self.lista_csv
+
 
 '''
 existing_ranks = load_existing_ranks()

@@ -47,7 +47,7 @@ def menu():
                 print("Saliendo de la aplicacion\n")
             elif opcion == 1:
                 print("Opcion 1: Crear Juego\n")
-                # Funcion Crear juego
+                ct.control(1)
             elif opcion == 2:
                 print("Opcion 2: Listar Juegos\n")
                 # Funcion Listar Juegos
@@ -55,4 +55,6 @@ def menu():
             elif opcion == 3:
                 print("Opcion 3: Listar Juegos por genero\n")
                 # Funcion Listar Juegos
+                ct.control(3)
 
+menu()

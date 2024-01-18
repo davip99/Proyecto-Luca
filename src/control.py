@@ -1,13 +1,15 @@
 from lista_juegos import Lista_Juegos as lj
 
+milista = lj("src/csv/vgsales.csv")
+
 def control(action):
-    milista = lj("src/csv/vgsales.csv")
+    
     if action == 1:
-        pass
-        #create_game = lj.create_game()
-        #lj.add_game(create_game)
+        milista.add_game()
+
     elif action == 2:
         milista.read_list()
+        
     elif action == 3:
         select_genre = milista.genero()
         for i in select_genre:
@@ -15,6 +17,6 @@ def control(action):
         genre = input("\nSelecciona un genero para filtrar: ")
         milista.filter_genre(genre)
 
-control(3)
+
     
 
