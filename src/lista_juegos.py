@@ -29,3 +29,15 @@ class Lista_Juegos:
         # imprime 5 valores, cambiarlo al final
         for juego in self.lista_csv[:10]:
             print(juego)
+
+    def genero(self):
+        generos = []
+        for juego in self.lista_csv[:10]:
+            if not juego.genre in generos:
+                generos.append(juego.genre)
+        return generos
+
+    def filter_genre(self, genero):
+        for juego in self.lista_csv[:10]:
+            if genero == juego.genre:
+                print(juego)

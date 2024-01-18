@@ -53,8 +53,6 @@ def menu():
                 # Funcion Listar Juegos
                 ct.control(2)
             elif opcion == 3:
-                print("Opcion 2: Listar Juegos por genero\n")
+                print("Opcion 3: Listar Juegos por genero\n")
                 # Funcion Listar Juegos
 
-milista = Lista_Juegos("src/csv/vgsales.csv")
-milista.read_list()
