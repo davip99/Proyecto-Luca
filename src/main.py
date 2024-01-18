@@ -11,7 +11,6 @@ def introducir_int(tetxo):
     Returns:
         int: numero entero escrito
     """
-    print(type(tetxo))
     try:
         numero = int(input(tetxo))
     except ValueError:
@@ -25,11 +24,12 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 1
+    valor_maximo = 2
     opcion = -1
     while opcion != 0:
         print("MENU:")
         print("[1] Crear Juego.")
+        print("[2] Listar Juegos")
         # Opciones
         print("[0] Salir")
         try:
@@ -44,6 +44,9 @@ def menu():
             elif opcion == 1:
                 print("Opcion 1: Crear Juego\n")
                 # Funcion Crear juego
+            elif opcion == 2:
+                print("Opcion 2: Listar Juegos\n")
+                # Funcion Listar Juegos
 
 
 menu()
