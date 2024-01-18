@@ -1,4 +1,5 @@
 import control as ct
+from lista_juegos import Lista_Juegos
 
 def introducir_int(tetxo):
     """
@@ -55,5 +56,5 @@ def menu():
                 print("Opcion 2: Listar Juegos por genero\n")
                 # Funcion Listar Juegos
 
-
-menu()
+milista = Lista_Juegos("src/csv/vgsales.csv")
+milista.read_list()
