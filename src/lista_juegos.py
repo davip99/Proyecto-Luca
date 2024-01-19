@@ -51,14 +51,16 @@ class Lista_Juegos:
         rank = 1
         while rank in self.lista_rank:
             rank += 1
-        new_game.rank = rank
-        print(new_game)
-        guardar = input("Quieres guardar el juego(Y/N): ")
-        if guardar == "Y":
-            self.lista_csv.insert(rank-1, new_game)
-            self.lista_rank.insert(rank-1, rank)
-            self.lista_names.insert(rank-1, new_game.name)
-        else:
+        try:
+            new_game.rank = rank
+            print(new_game)
+            guardar = input("Quieres guardar el juego(Y/N): ")
+            if guardar == "Y":
+                self.lista_csv.insert(rank - 1, new_game)
+                self.lista_rank.insert(rank - 1, rank)
+            else:
+                print("Juego no guardado")
+        except AttributeError:
             print("Juego no guardado")
 
     @staticmethod
