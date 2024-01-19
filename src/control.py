@@ -13,21 +13,19 @@ def control(action):
          """
 
     if action == 1:
+        # Funcion Crear Juegos
         milista.add_game()
 
     elif action == 2:
+        # Funcion Listar Juegos
         milista.read_list()
 
     elif action == 3:
-        """
-        Imprime los géneros registrados en la base
-        """
+        # Imprime los géneros registrados en la base
         select_genre = milista.genero()
         for i in select_genre:
             print(i, end=" ")
-        """
-        Función filtrar por género
-        """
+        # Funcion Listar Juegos por género
         genre = input("\nSelecciona un genero para filtrar: ")
         milista.filter_genre(genre)
 
