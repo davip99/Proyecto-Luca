@@ -47,11 +47,11 @@ class Juegos:
         year = input("Ingrese el año de lanzamiento del juego: ")
         genre = input("Ingrese el género del juego: ")
         publisher = input("Ingrese el editor del juego: ")
-        na_Sales = input("Ingrese las ventas en América del Norte: ")
-        eu_sales = input("Ingrese las ventas en Europa: ")
-        jp_sales = input("Ingrese las ventas en Japón: ")
-        other_sales = input("Ingrese las ventas en otras regiones: ")
-        global_sales = input("Ingrese las ventas globales: ")
+        na_Sales = float(input("Ingrese las ventas en América del Norte: "))
+        eu_sales = float(input("Ingrese las ventas en Europa: "))
+        jp_sales = float(input("Ingrese las ventas en Japón: "))
+        other_sales = float(input("Ingrese las ventas en otras regiones: "))
+        global_sales = float(input("Ingrese las ventas globales: "))
 
         if not name:
             print("Error: El nombre del juego es obligatorio.")
@@ -65,4 +65,4 @@ class Juegos:
         print(f"Juego '{name}' creado con éxito")
 
         # Devolver el resultado como un booleano
-        return Juegos(rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+        return Juegos(rank, name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
