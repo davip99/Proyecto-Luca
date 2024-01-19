@@ -10,6 +10,7 @@ class Lista_Juegos:
         Genera dos atributos:
             lista_csv<Juegos>: Lista de los Juegos
             lista_rank<int>: Lista de los ranks escogidos
+            lista_names<str>: Lista de los nombres escogidos
 
         Args:
             csv_path (str): string de la ruta del csv.
@@ -19,15 +20,15 @@ class Lista_Juegos:
 
     def read_list(self):
         """
-        Lee la lista de juegos.
+        Lee la lista de juegos y la imprime.
         """
-        # imprime 5 valores, cambiarlo al final
+        # imprime 655 valores, cambiarlo al final
         for juego in self.lista_csv[:655]:
             print(juego)
 
     def exist(self, juego):
         """
-        Comprueba si un juego especifico existe en la lista
+        Comprueba si un juego especifico existe en la lista.
 
         Args:
             juego (Juegos): Juego a comprobar.
@@ -38,6 +39,12 @@ class Lista_Juegos:
         return juego.name in self.lista_names
 
     def genero(self):
+        """
+        Recorre la lista y guarda los generos en otra lista.
+
+        Returns:
+            generos: una lista con los distintos generos.
+        """
         generos = []
         for juego in self.lista_csv[:10]:
             if not juego.genre in generos:
@@ -45,11 +52,26 @@ class Lista_Juegos:
         return generos
 
     def filter_genre(self, genero):
+        """
+        Filtra los juegos por el genero indicado.
+
+        Args:
+            genero: Genero indicado por el usuario.
+        """
         for juego in self.lista_csv[:10]:
             if genero == juego.genre:
                 print(juego)
 
     def check_duplicate_games(self, game):
+        """
+        Comprueba si existen juegos duplicados.
+
+        Args:
+            game (Juego): Juego creado a traves de create_game.
+
+        Returns:
+            bool: True si existe el juego, False si no.
+        """
         for existing_game in self.lista_csv:
             if game.name == existing_game.name:
                 print("Juego duplicado")
@@ -57,6 +79,9 @@ class Lista_Juegos:
         return False
 
     def add_game(self):
+        """
+        Funcion para añadir juegos a la lista de juegos.
+        """
         new_game = Juegos.create_game()
         duplicado = self.check_duplicate_games(new_game)
 
@@ -68,9 +93,10 @@ class Lista_Juegos:
                 new_game.rank = rank
                 print(new_game)
                 guardar = input("Quieres guardar el juego(Y/N): ")
-                if guardar == "Y":
+                if guardar.upper() == "Y":
                     self.lista_csv.insert(rank - 1, new_game)
                     self.lista_rank.insert(rank - 1, rank)
+                    print("Juego guardado")
                 else:
                     print("Juego no guardado")
             except AttributeError:
