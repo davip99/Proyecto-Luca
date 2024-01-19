@@ -1,3 +1,4 @@
+
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
@@ -5,12 +6,11 @@ from src.lista_juegos import Lista_Juegos as lj
 
 milista = lj("src/csv/vgsales.csv")
 
-
 def control(action):
     """
     Función de control:
-         Recibe inputs desde el menú y se encarga de llamar a la función correspondiente
-         """
+        Recibe inputs desde el menú y se encarga de llamar a la función correspondiente
+    """
 
     if action == 1:
         # Funcion Crear Juegos

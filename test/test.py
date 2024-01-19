@@ -29,11 +29,21 @@ class PruebaTestFixture(unittest.TestCase):
     def test_elemento_concreto(self):
         game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
         self.assertTrue(self.lista_juegos.exist(game_to_check))
-        print("El juego existe")
 
     def test_check_duplicate(self):
         game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
         self.assertTrue(self.lista_juegos.check_duplicate_games(game_to_check))
+
+    def test_check_csv(self):
+        csv = "src/csv/vgsales.csv"
+        self.assertTrue(self.lista_juegos.verificar_csv(csv))
+        lista_csv, lista_rank, lista_names = self.lista_juegos.convert_csv_list(csv)
+
+        # Verifica si todas las listas son instancias de la clase list
+        self.assertIsInstance(lista_csv, list)
+        self.assertIsInstance(lista_rank, list)
+        self.assertIsInstance(lista_names, list)
+    
 
 if __name__ == '__main__':
     unittest.main() 

@@ -68,7 +68,7 @@ def val_per(a):
         a (str): valor
 
     Returns:
-        int, str: itn si es un numero si no devuelve str
+        int, str: int si es un numero si no devuelve str
     """
     try:
         return int(a)

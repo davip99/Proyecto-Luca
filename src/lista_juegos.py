@@ -1,6 +1,8 @@
 import csv
+import os
 from src.Juegos import Juegos
 import src.util as util
+
 
 class Lista_Juegos:
 
@@ -101,6 +103,9 @@ class Lista_Juegos:
                     print("Juego no guardado")
             except AttributeError:
                 print("Juego no guardado")
+
+    def verificar_csv(self, csv_path):
+        return os.path.exists(csv_path)
 
     @staticmethod
     def convert_csv_list(csv_path):
