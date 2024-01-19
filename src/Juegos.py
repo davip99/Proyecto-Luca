@@ -1,12 +1,11 @@
 
 class Juegos:
 
-    def __init__(self, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales):
+    def __init__(self, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank=0):
         """
         Constructor de la clase Juegos
 
         Args:
-            rank (int): Rango del videojuego.
             name (str): Nombre del videojuego.
             platform (str): Plataforma del videojuego
             year (int): Año de salida del videojuego
@@ -17,6 +16,7 @@ class Juegos:
             jp_sales (flaot): Ventas en Japon del videojuego
             other_sales (float): Venta en otros lugares del videojuego
             global_sales (float): Ventas globales del videojuego
+            rank (int, optional): Ventas globales del videojuego. Por defecto es 0.
         """
         self.rank = rank
         self.name = name
@@ -41,7 +41,6 @@ class Juegos:
         Returns:
             Juego: Objeto Juego creado a partir  de los valoes
         """
-        rank = 0
         name = input("Ingrese el nombre del juego: ")
         platform = input("Ingrese la plataforma del juego: ")
         year = input("Ingrese el año de lanzamiento del juego: ")
@@ -57,12 +56,50 @@ class Juegos:
             print("Error: El nombre del juego es obligatorio.")
             return False
 
+        if not platform:
+            print("Error: La plataforma del juego es obligatorio.")
+            return False
+        
+        if not genre:
+            print("Error: El género del juego es obligatorio.")
+            return False
+
         if year and not year.isdigit():
             print("Error: El año de lanzamiento debe ser un número entero.")
+            return False
+
+        try:
+            na_Sales = float(na_Sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            eu_sales = float(eu_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            jp_sales = float(jp_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            other_sales = float(other_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            global_sales = float(global_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
             return False
 
         game_created = True
         print(f"Juego '{name}' creado con éxito")
 
         # Devolver el resultado como un booleano
-        return Juegos(rank, name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+        return Juegos(name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)

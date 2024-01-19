@@ -21,3 +21,5 @@ def control(action):
         genre = input("\nSelecciona un genero para filtrar: ")
         milista.filter_genre(genre)
 
+    """elif action == 4:
+            milista.filter_century20()"""

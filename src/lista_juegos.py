@@ -14,9 +14,8 @@ class Lista_Juegos:
         """
         Constructor de la clase Lista_jeugos.
         Genera dos atributos:
-            lista_csv: Lista de los Juegos
-            lista_rank: Lista de los ranks escogidos
-            lista_names: Lista de los nombres escogidos
+            lista_csv<Juegos>: Lista de los Juegos
+            lista_rank<int>: Lista de los ranks escogidos
 
         Args:
             csv_path (str): string de la ruta del csv.
@@ -61,14 +60,16 @@ class Lista_Juegos:
         rank = 1
         while rank in self.lista_rank:
             rank += 1
-        new_game.rank = rank
-        print(new_game)
-        guardar = input("Quieres guardar el juego(Y/N): ")
-        if guardar == "Y":
-            self.lista_csv.insert(rank-1, new_game)
-            self.lista_rank.insert(rank-1, rank)
-            self.lista_names.insert(rank-1, new_game.name)
-        else:
+        try:
+            new_game.rank = rank
+            print(new_game)
+            guardar = input("Quieres guardar el juego(Y/N): ")
+            if guardar == "Y":
+                self.lista_csv.insert(rank - 1, new_game)
+                self.lista_rank.insert(rank - 1, rank)
+            else:
+                print("Juego no guardado")
+        except AttributeError:
             print("Juego no guardado")
 
     @staticmethod
