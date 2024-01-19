@@ -30,3 +30,6 @@ class PruebaTestFixture(unittest.TestCase):
         lj.convert_csv_list()
         r = lj.read_list()
         self.assertIn(self.elemento_concreto, r)
+
+if __name__ == '__main__':
+    unittest.main() 
