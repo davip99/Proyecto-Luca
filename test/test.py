@@ -45,10 +45,14 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertIsInstance(lista_names, list)
     
     def test_filtro_genero(self):
-        genero = "Shooter"
-        filtro = self.lista_juegos.filter_genre(genero).genre
-        self.assertTrue(genero == filtro)
-        print(f"Género esperado: {genero}, Género mostrado: {filtro}")
+        genero = "Platform"
+        salida_esperada = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
+        filtro = self.lista_juegos.filter_genre(genero)
+        for f in filtro:
+            if f.genre in salida_esperada.genre:
+                print(f)
+        self.assertTrue(f.genre == salida_esperada.genre)
+        print(f"Género esperado: {genero}, Género mostrado: {f.genre}")
 
 if __name__ == '__main__':
     unittest.main() 

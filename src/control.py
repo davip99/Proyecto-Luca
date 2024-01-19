@@ -27,7 +27,9 @@ def control(action):
             print(i, end=" ")
         # Funcion Listar Juegos por género
         genre = input("\nSelecciona un genero para filtrar: ")
-        milista.filter_genre(genre)
+        game_filter = milista.filter_genre(genre)
+        for game in game_filter:
+            print(game)
 
     """elif action == 4:
             milista.filter_century20()"""

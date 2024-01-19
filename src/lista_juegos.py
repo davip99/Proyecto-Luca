@@ -60,9 +60,12 @@ class Lista_Juegos:
         Args:
             genero: Genero indicado por el usuario.
         """
+        juegos_filtrados = []
         for juego in self.lista_csv[:10]:
             if genero == juego.genre:
-                print(juego)
+                #print(juego)
+                juegos_filtrados.append(juego)
+        return juegos_filtrados
 
     def check_duplicate_games(self, game):
         """
