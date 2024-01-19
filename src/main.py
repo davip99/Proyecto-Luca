@@ -56,7 +56,7 @@ def menu():
                 ct.control(2)
             elif opcion == 3:
                 print("Opcion 3: Listar Juegos por genero\n")
-                # Funcion Listar Juegos
+                # Funcion Listar Juegos por género
                 ct.control(3)
 
 
