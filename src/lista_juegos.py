@@ -14,8 +14,8 @@ class Lista_Juegos:
         """
         Constructor de la clase Lista_jeugos.
         Genera dos atributos:
-            lista_csv: Lista de los Juegos
-            lista_rank: Lista de los ranks escogidos
+            lista_csv<Juegos>: Lista de los Juegos
+            lista_rank<int>: Lista de los ranks escogidos
 
         Args:
             csv_path (str): string de la ruta del csv.
