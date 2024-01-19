@@ -4,6 +4,7 @@ import os
 
 
 class Lista_Juegos:
+
     def __init__(self, csv_path):
         """
         Constructor de la clase Lista_jeugos.
@@ -32,9 +33,10 @@ class Lista_Juegos:
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos(rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+                juego = Juegos(rank, name, platform, year, genre, publisher,
+                               na_Sales, eu_sales, jp_sales, other_sales, global_sales)
                 lista_csv.append(juego)
-                lista_rank.append(rank)
+                lista_rank.append(int(rank))
         return lista_csv, lista_rank
 
     def read_list(self):
@@ -58,11 +60,10 @@ class Lista_Juegos:
                 print(juego)
 
     def add_game(self):
-        # implementar lista rangos
         new_game = Juegos.create_game()
         rank = 1
 
-        while str(rank) in self.lista_rank:
+        while rank in self.lista_rank:
             rank += 1
 
         new_game.rank = rank
@@ -70,6 +71,6 @@ class Lista_Juegos:
         guardar = input("Quieres guardar el juego(Y/N): ")
         if guardar == "Y":
             self.lista_csv.insert(rank-1, new_game)
-            self.lista_rank.insert(rank-1, str(rank))
+            self.lista_rank.insert(rank-1, rank)
         else:
             print("Juego no guardado")
