@@ -6,7 +6,7 @@ class Lista_Juegos:
 
     def __init__(self, csv_path):
         """
-        Constructor de la clase Lista_jeugos.
+        Constructor de la clase Lista_juegos.
         Genera dos atributos:
             lista_csv<Juegos>: Lista de los Juegos
             lista_rank<int>: Lista de los ranks escogidos
