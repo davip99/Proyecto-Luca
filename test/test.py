@@ -49,7 +49,7 @@ class PruebaTestFixture(unittest.TestCase):
             genero = self.lista_juegos.genero()[i]
             filtro = self.lista_juegos.filter_genre(genero).genre
             self.assertTrue(genero == filtro)
-            print(f"Expected genre: {genero}, Actual genre: {filtro}")
+            print(f"Género esperado: {genero}, Género filtrado: {filtro}")
         
     def test_type(self):
         for i in range(70):
