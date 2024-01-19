@@ -1,5 +1,5 @@
-from Juegos import Juegos
 import csv
+from src.Juegos import Juegos
 
 #RECORDADLE A JORGE QUE ESPABILE Y PIENSE DONDE METER ESTA BASURA
 def val_per(a):
@@ -32,6 +32,15 @@ class Lista_Juegos:
             print(juego)
 
     def exist(self, juego):
+        """
+        Comprueba si un juego especifico existe en la lista
+
+        Args:
+            juego (Juegos): Juego a comprobar.
+
+        Returns:
+            bool: True si existe el juego, False si no.
+        """
         return juego.name in self.lista_names
 
     def genero(self):
@@ -51,14 +60,16 @@ class Lista_Juegos:
         rank = 1
         while rank in self.lista_rank:
             rank += 1
-        new_game.rank = rank
-        print(new_game)
-        guardar = input("Quieres guardar el juego(Y/N): ")
-        if guardar == "Y":
-            self.lista_csv.insert(rank-1, new_game)
-            self.lista_rank.insert(rank-1, rank)
-            self.lista_names.insert(rank-1, new_game.name)
-        else:
+        try:
+            new_game.rank = rank
+            print(new_game)
+            guardar = input("Quieres guardar el juego(Y/N): ")
+            if guardar == "Y":
+                self.lista_csv.insert(rank - 1, new_game)
+                self.lista_rank.insert(rank - 1, rank)
+            else:
+                print("Juego no guardado")
+        except AttributeError:
             print("Juego no guardado")
 
     @staticmethod
@@ -80,8 +91,8 @@ class Lista_Juegos:
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos(rank, name, platform, val_per(year), genre, publisher,
-                               float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales))
+                juego = Juegos(name, platform, val_per(year), genre, publisher,
+                               float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales), rank)
                 lista_csv.append(juego)
                 lista_rank.append(int(rank))
                 lista_names.append(name)

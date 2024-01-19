@@ -1,5 +1,9 @@
 import unittest
-from lista_juegos import Lista_Juegos as lj
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+from src.lista_juegos import Lista_Juegos as lj
+from src.Juegos import Juegos as game
 
 class PruebaTestFixture(unittest.TestCase):
 
@@ -14,22 +18,18 @@ class PruebaTestFixture(unittest.TestCase):
     #Antes de cada test
     def setUp(self):
         print("-- Preparando el contexto del text")
-        self.elemento_concreto = ['2,Super Mario Bros.,NES,1985,Platform,Nintendo,29.08,3.58,6.81,0.77,40.24']
+        csv_path = "src/csv/vgsales.csv"
+        self.lista_juegos = lj(csv_path)
         
     #Despues de cada test
     def tearDown(self):
-        print("-- Destruyendo el contexto del test")
-        del(self.elemento_concreto)        
+        print("-- Destruyendo el contexto del test") 
+        del(self.lista_juegos)      
     
-        
-    def test_tonto(self):
-        self.assertTrue(True)
-
     def test_elemento_concreto(self):
-        print("Prueba existe un elemento concreto")
-        lj.convert_csv_list()
-        r = lj.read_list()
-        self.assertIn(self.elemento_concreto, r)
+        game_to_check = game("2","Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24)
+        self.assertTrue(self.lista_juegos.exist(game_to_check))
+        print("El juego existe")
 
 if __name__ == '__main__':
     unittest.main() 
