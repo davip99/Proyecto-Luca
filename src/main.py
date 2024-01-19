@@ -33,8 +33,8 @@ def menu():
     while opcion != 0:
         print("MENU:")
         print("[1] Crear Juego.")
-        print("[2] Listar Juegos")
-        print("[3] Listar Juegos por generos")
+        print("[2] Listar Juegos.")
+        print("[3] Listar Juegos por generos.")
         # Opciones
         print("[0] Salir")
         try:
