@@ -49,6 +49,14 @@ class PruebaTestFixture(unittest.TestCase):
         filtro = self.lista_juegos.filter_genre(genero).genre
         self.assertTrue(genero == filtro)
         print(f"Género esperado: {genero}, Género mostrado: {filtro}")
-
+        
+    def test_type(self):
+        for i in range(70):
+            genero = self.lista_juegos.lista_csv[i].genre
+            nombre = self.lista_juegos.lista_csv[i].name
+            year = self.lista_juegos.lista_csv[i].year
+            ventas = self.lista_juegos.lista_csv[i].na_Sales
+            self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and isinstance(year, int) and isinstance(ventas, float))
+        print(f"Los tipos de las variables corresponden con lo esperado")
 if __name__ == '__main__':
     unittest.main() 
