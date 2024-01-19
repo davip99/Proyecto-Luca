@@ -31,6 +31,9 @@ class Lista_Juegos:
         for juego in self.lista_csv[:655]:
             print(juego)
 
+    def exist(self, juego):
+        return juego in self.lista_csv
+
     def genero(self):
         generos = []
         for juego in self.lista_csv[:10]:
