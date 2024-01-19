@@ -56,8 +56,46 @@ class Juegos:
             print("Error: El nombre del juego es obligatorio.")
             return False
 
+        if not platform:
+            print("Error: La plataforma del juego es obligatorio.")
+            return False
+        
+        if not genre:
+            print("Error: El género del juego es obligatorio.")
+            return False
+
         if year and not year.isdigit():
             print("Error: El año de lanzamiento debe ser un número entero.")
+            return False
+
+        try:
+            na_Sales = float(na_Sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            eu_sales = float(eu_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            jp_sales = float(jp_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            other_sales = float(other_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
+            return False
+
+        try:
+            global_sales = float(global_sales)
+        except ValueError:
+            print("Error: Todos los valores en ventas deben ser números.")
             return False
 
         game_created = True
