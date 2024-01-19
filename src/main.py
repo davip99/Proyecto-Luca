@@ -48,6 +48,7 @@ def menu():
                 print("Saliendo de la aplicacion\n")
             elif opcion == 1:
                 print("Opcion 1: Crear Juego\n")
+                # Funcion Crear Juegos
                 ct.control(1)
             elif opcion == 2:
                 print("Opcion 2: Listar Juegos\n")
@@ -59,4 +60,5 @@ def menu():
                 ct.control(3)
 
 
-menu()
+if __name__ == '__main__':
+    menu()
