@@ -58,6 +58,10 @@ class PruebaTestFixture(unittest.TestCase):
             ventas = self.lista_juegos.lista_csv[i].na_Sales
             self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and isinstance(year, int) and isinstance(ventas, float))
         print(f"Los tipos de las variables corresponden con lo esperado")
+
+    def test_primer_elemento(self):
+        game_to_check = game("Wii Sports","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74, "1")
+        self.assertTrue(str(self.lista_juegos.lista_csv[0]) == str(game_to_check))
         
 if __name__ == '__main__':
     unittest.main() 
