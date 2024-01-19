@@ -41,17 +41,23 @@ class Juegos:
         Returns:
             Juego: Objeto Juego creado a partir  de los valoes
         """
-        name = input("Ingrese el nombre del juego: ")
-        platform = input("Ingrese la plataforma del juego: ")
-        year = input("Ingrese el año de lanzamiento del juego: ")
-        genre = input("Ingrese el género del juego: ")
-        publisher = input("Ingrese el editor del juego: ")
-        na_Sales = float(input("Ingrese las ventas en América del Norte: "))
-        eu_sales = float(input("Ingrese las ventas en Europa: "))
-        jp_sales = float(input("Ingrese las ventas en Japón: "))
-        other_sales = float(input("Ingrese las ventas en otras regiones: "))
-        global_sales = float(input("Ingrese las ventas globales: "))
-
+        try:
+            name = input_obligatorio("Ingrese el nombre del juego: ")
+            platform = input_obligatorio("Ingrese la plataforma del juego: ")
+            year = input_int("Ingrese el año de lanzamiento del juego: ")
+            genre = input_obligatorio("Ingrese el género del juego: ")
+            publisher = input_obligatorio("Ingrese el editor del juego: ")
+            na_Sales = input_float("Ingrese las ventas en América del Norte: ")
+            eu_sales = input_float("Ingrese las ventas en Europa: ")
+            jp_sales = input_float("Ingrese las ventas en Japón: ")
+            other_sales = input_float("Ingrese las ventas en otras regiones: ")
+            global_sales = input_float("Ingrese las ventas globales: ")
+        except ValueError as e:
+            print(str(e))
+        else:
+            print(f"Juego '{name}' creado con éxito")
+            return Juegos(name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+        """
         if not name:
             print("Error: El nombre del juego es obligatorio.")
             return False
@@ -59,7 +65,7 @@ class Juegos:
         if not platform:
             print("Error: La plataforma del juego es obligatorio.")
             return False
-        
+
         if not genre:
             print("Error: El género del juego es obligatorio.")
             return False
@@ -97,9 +103,31 @@ class Juegos:
         except ValueError:
             print("Error: Todos los valores en ventas deben ser números.")
             return False
+            """
 
-        game_created = True
-        print(f"Juego '{name}' creado con éxito")
 
-        # Devolver el resultado como un booleano
-        return Juegos(name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+# Organizar mas tarde
+
+def input_obligatorio(texto):
+    valor = input(texto)
+    if len(valor.strip()) <= 0:
+        raise ValueError("Valor incorrecto, Este campo es obligatorio")
+    return valor
+
+def input_int(texto):
+    try:
+        num_int = int(input(texto))
+    except ValueError:
+        raise ValueError("Valor incorrecto, se necesita un numero entero")
+    else:
+        return num_int
+
+
+def input_float(texto):
+    try:
+        num_float = float(input(texto))
+    except ValueError:
+        raise ValueError(
+            "Valor no correcto, se necesita un numero entero o decimal")
+    else:
+        return num_float
