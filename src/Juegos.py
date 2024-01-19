@@ -1,6 +1,6 @@
 
 class Juegos:
-    
+
     def __init__(self, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales):
         """
         Constructor de la clase Juegos
@@ -32,11 +32,15 @@ class Juegos:
 
     def __str__(self):
         return f"Rank: {self.rank},\n Name: {self.name},\n Platform: {self.platform},\n Year: {self.year},\n Genre: {self.genre},\n Publisher: {self.publisher},\n NA_Sales: {self.na_Sales},\n EU_sales: {self.eu_sales},\n JP_sales: {self.jp_sales},\n Other_sales: {self.other_sales},\n Global_sales: {self.global_sales}\n"
-    
+
     @staticmethod
     def create_game():
- 
-        # Solicitar al usuario que ingrese los valores para los campos
+        """
+        Crear un juego pidiendo los campos por consola
+
+        Returns:
+            Juego: Objeto Juego creado a partir  de los valoes
+        """
         rank = 0
         name = input("Ingrese el nombre del juego: ")
         platform = input("Ingrese la plataforma del juego: ")
@@ -48,19 +52,17 @@ class Juegos:
         jp_sales = input("Ingrese las ventas en Japón: ")
         other_sales = input("Ingrese las ventas en otras regiones: ")
         global_sales = input("Ingrese las ventas globales: ")
-        
-        
+
         if not name:
             print("Error: El nombre del juego es obligatorio.")
             return False
-        
+
         if year and not year.isdigit():
             print("Error: El año de lanzamiento debe ser un número entero.")
             return False
-        
-        
+
         game_created = True
         print(f"Juego '{name}' creado con éxito")
-        
+
         # Devolver el resultado como un booleano
         return Juegos(rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
