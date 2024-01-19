@@ -55,22 +55,32 @@ class Lista_Juegos:
             if genero == juego.genre:
                 print(juego)
 
+    def check_duplicate_games(self, game):
+        for existing_game in self.lista_csv:
+            if game.name == existing_game.name:
+                print("Juego duplicado")
+                return True
+        return False
+
     def add_game(self):
         new_game = Juegos.create_game()
-        rank = 1
-        while rank in self.lista_rank:
-            rank += 1
-        try:
-            new_game.rank = rank
-            print(new_game)
-            guardar = input("Quieres guardar el juego(Y/N): ")
-            if guardar == "Y":
-                self.lista_csv.insert(rank - 1, new_game)
-                self.lista_rank.insert(rank - 1, rank)
-            else:
+        duplicado = self.check_duplicate_games(new_game)
+
+        if not duplicado:
+            rank = 1
+            while rank in self.lista_rank:
+                rank += 1
+            try:
+                new_game.rank = rank
+                print(new_game)
+                guardar = input("Quieres guardar el juego(Y/N): ")
+                if guardar == "Y":
+                    self.lista_csv.insert(rank - 1, new_game)
+                    self.lista_rank.insert(rank - 1, rank)
+                else:
+                    print("Juego no guardado")
+            except AttributeError:
                 print("Juego no guardado")
-        except AttributeError:
-            print("Juego no guardado")
 
     @staticmethod
     def convert_csv_list(csv_path):

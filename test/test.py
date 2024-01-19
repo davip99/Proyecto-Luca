@@ -27,9 +27,13 @@ class PruebaTestFixture(unittest.TestCase):
         del(self.lista_juegos)      
     
     def test_elemento_concreto(self):
-        game_to_check = game("2","Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24)
+        game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
         self.assertTrue(self.lista_juegos.exist(game_to_check))
         print("El juego existe")
+
+    def test_check_duplicate(self):
+        game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
+        self.assertTrue(self.lista_juegos.check_duplicate_games(game_to_check))
 
 if __name__ == '__main__':
     unittest.main() 
