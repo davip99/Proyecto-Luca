@@ -1,4 +1,16 @@
 def input_obligatorio(texto):
+    """
+    Introduce un valor obligatoriamente (no puede estar vacio).
+
+    Args:
+        texto (str): Texto a mostrar para pedir el valor.
+
+    Raises:
+        ValueError: Error si el valor esta vacio.
+
+    Returns:
+        str: valor escrito
+    """
     valor = input(texto)
     if len(valor.strip()) <= 0:
         raise ValueError("Valor incorrecto, Este campo es obligatorio.")
@@ -6,6 +18,18 @@ def input_obligatorio(texto):
 
 
 def input_int(texto):
+    """
+    Introduce un valor int (numero entero).
+
+    Args:
+        texto (str): Texto a mostrar para pedir el numero.
+
+    Raises:
+        ValueError: Error si el numero no es un int.
+
+    Returns:
+        str: numero escrito
+    """
     try:
         num_int = int(input(texto))
     except ValueError:
@@ -15,6 +39,18 @@ def input_int(texto):
 
 
 def input_float(texto):
+    """
+    Introduce un valor float (numero decimal).
+
+    Args:
+        texto (str): Texto a mostrar para pedir el numero.
+
+    Raises:
+        ValueError: Error si el numero no es un float.
+
+    Returns:
+        str: numero escrito
+    """
     try:
         num_float = float(input(texto))
     except ValueError:
@@ -25,6 +61,15 @@ def input_float(texto):
 
 
 def val_per(a):
+    """
+    Introduce un valor float (numero decimal).
+
+    Args:
+        a (str): valor
+
+    Returns:
+        int, str: itn si es un numero si no devuelve str
+    """
     try:
         return int(a)
     except ValueError:
