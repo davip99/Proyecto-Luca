@@ -1,6 +1,12 @@
-from Juegos import Juegos
 import csv
+from src.Juegos import Juegos
 
+#RECORDADLE A JORGE QUE ESPABILE Y PIENSE DONDE METER ESTA BASURA
+def val_per(a):
+    try:
+        return int(a)
+    except ValueError:
+        return "NA"
 
 class Lista_Juegos:
 
@@ -10,11 +16,12 @@ class Lista_Juegos:
         Genera dos atributos:
             lista_csv: Lista de los Juegos
             lista_rank: Lista de los ranks escogidos
+            lista_names: Lista de los nombres escogidos
 
         Args:
             csv_path (str): string de la ruta del csv.
         """
-        self.lista_csv, self.lista_rank = Lista_Juegos.convert_csv_list(
+        self.lista_csv, self.lista_rank, self.lista_names = Lista_Juegos.convert_csv_list(
             csv_path)
 
     def read_list(self):
@@ -24,6 +31,18 @@ class Lista_Juegos:
         # imprime 5 valores, cambiarlo al final
         for juego in self.lista_csv[:655]:
             print(juego)
+
+    def exist(self, juego):
+        """
+        Comprueba si un juego especifico existe en la lista
+
+        Args:
+            juego (Juegos): Juego a comprobar.
+
+        Returns:
+            bool: True si existe el juego, False si no.
+        """
+        return juego.name in self.lista_names
 
     def genero(self):
         generos = []
@@ -48,6 +67,7 @@ class Lista_Juegos:
         if guardar == "Y":
             self.lista_csv.insert(rank-1, new_game)
             self.lista_rank.insert(rank-1, rank)
+            self.lista_names.insert(rank-1, new_game.name)
         else:
             print("Juego no guardado")
 
@@ -64,13 +84,15 @@ class Lista_Juegos:
         """
         lista_csv = []
         lista_rank = []
+        lista_names = []
         with open(csv_path, newline='', encoding='utf-8') as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos(rank, name, platform, int(year), genre, publisher,
+                juego = Juegos(rank, name, platform, val_per(year), genre, publisher,
                                float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales))
                 lista_csv.append(juego)
                 lista_rank.append(int(rank))
-        return lista_csv, lista_rank
+                lista_names.append(name)
+        return lista_csv, lista_rank, lista_names
