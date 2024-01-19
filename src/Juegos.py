@@ -1,3 +1,5 @@
+import src.util as util
+
 
 class Juegos:
 
@@ -42,45 +44,21 @@ class Juegos:
             Juego: Objeto Juego creado a partir  de los valoes
         """
         try:
-            name = input_obligatorio("Ingrese el nombre del juego: ")
-            platform = input_obligatorio("Ingrese la plataforma del juego: ")
-            year = input_int("Ingrese el año de lanzamiento del juego: ")
-            genre = input_obligatorio("Ingrese el género del juego: ")
-            publisher = input_obligatorio("Ingrese el editor del juego: ")
-            na_Sales = input_float("Ingrese las ventas en América del Norte: ")
-            eu_sales = input_float("Ingrese las ventas en Europa: ")
-            jp_sales = input_float("Ingrese las ventas en Japón: ")
-            other_sales = input_float("Ingrese las ventas en otras regiones: ")
-            global_sales = input_float("Ingrese las ventas globales: ")
+            name = util.input_obligatorio("Ingrese el nombre del juego: ")
+            platform = util.input_obligatorio(
+                "Ingrese la plataforma del juego: ")
+            year = util.input_int("Ingrese el año de lanzamiento del juego: ")
+            genre = util.input_obligatorio("Ingrese el género del juego: ")
+            publisher = util.input_obligatorio("Ingrese el editor del juego: ")
+            na_Sales = util.input_float(
+                "Ingrese las ventas en América del Norte: ")
+            eu_sales = util.input_float("Ingrese las ventas en Europa: ")
+            jp_sales = util.input_float("Ingrese las ventas en Japón: ")
+            other_sales = util.input_float(
+                "Ingrese las ventas en otras regiones: ")
+            global_sales = util.input_float("Ingrese las ventas globales: ")
         except ValueError as e:
             print(str(e))
         else:
             print(f"Juego '{name}' creado con éxito")
             return Juegos(name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
-
-
-# Organizar mas tarde
-
-def input_obligatorio(texto):
-    valor = input(texto)
-    if len(valor.strip()) <= 0:
-        raise ValueError("Valor incorrecto, Este campo es obligatorio.")
-    return valor
-
-def input_int(texto):
-    try:
-        num_int = int(input(texto))
-    except ValueError:
-        raise ValueError("Valor incorrecto, se necesita un numero entero.")
-    else:
-        return num_int
-
-
-def input_float(texto):
-    try:
-        num_float = float(input(texto))
-    except ValueError:
-        raise ValueError(
-            "Valor no correcto, se necesita un numero entero o decimal.")
-    else:
-        return num_float

@@ -1,12 +1,6 @@
 import csv
 from src.Juegos import Juegos
-
-#RECORDADLE A JORGE QUE ESPABILE Y PIENSE DONDE METER ESTA BASURA
-def val_per(a):
-    try:
-        return int(a)
-    except ValueError:
-        return "NA"
+import src.util as util
 
 class Lista_Juegos:
 
@@ -101,7 +95,7 @@ class Lista_Juegos:
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos(name, platform, val_per(year), genre, publisher,
+                juego = Juegos(name, platform, util.val_per(year), genre, publisher,
                                float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales), rank)
                 lista_csv.append(juego)
                 lista_rank.append(int(rank))
