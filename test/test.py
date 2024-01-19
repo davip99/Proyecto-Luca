@@ -48,7 +48,7 @@ class PruebaTestFixture(unittest.TestCase):
         genero = "Shooter"
         filtro = self.lista_juegos.filter_genre(genero).genre
         self.assertTrue(genero == filtro)
-        print(f"Expected genre: {genero}, Actual genre: {filtro}")
+        print(f"Género esperado: {genero}, Género mostrado: {filtro}")
 
 if __name__ == '__main__':
     unittest.main() 
