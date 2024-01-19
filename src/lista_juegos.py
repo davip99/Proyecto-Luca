@@ -1,5 +1,7 @@
 from Juegos import Juegos
 import csv
+
+#RECORDADLE A JORGE QUE ESPABILE Y PIENSE DONDE METER ESTA BASURA
 def val_per(a):
     try:
         return int(a)
