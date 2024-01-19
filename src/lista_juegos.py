@@ -20,7 +20,7 @@ class Lista_Juegos:
         Args:
             csv_path (str): string de la ruta del csv.
         """
-        self.lista_csv, self.lista_rank = Lista_Juegos.convert_csv_list(
+        self.lista_csv, self.lista_rank, self.lista_names = Lista_Juegos.convert_csv_list(
             csv_path)
 
     def read_list(self):
@@ -32,7 +32,7 @@ class Lista_Juegos:
             print(juego)
 
     def exist(self, juego):
-        return juego in self.lista_csv
+        return juego.name in self.lista_names
 
     def genero(self):
         generos = []
@@ -57,6 +57,7 @@ class Lista_Juegos:
         if guardar == "Y":
             self.lista_csv.insert(rank-1, new_game)
             self.lista_rank.insert(rank-1, rank)
+            self.lista_names.insert(rank-1, new_game.name)
         else:
             print("Juego no guardado")
 
@@ -73,6 +74,7 @@ class Lista_Juegos:
         """
         lista_csv = []
         lista_rank = []
+        lista_names = []
         with open(csv_path, newline='', encoding='utf-8') as csv_file:
             csv_reader = csv.reader(csv_file)
             next(csv_reader)
@@ -82,4 +84,5 @@ class Lista_Juegos:
                                float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales))
                 lista_csv.append(juego)
                 lista_rank.append(int(rank))
-        return lista_csv, lista_rank
+                lista_names.append(name)
+        return lista_csv, lista_rank, lista_names
