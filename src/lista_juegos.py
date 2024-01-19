@@ -63,6 +63,7 @@ class Lista_Juegos:
         for juego in self.lista_csv[:10]:
             if genero == juego.genre:
                 print(juego)
+                return juego
 
     def check_duplicate_games(self, game):
         """
