@@ -1,6 +1,10 @@
 from Juegos import Juegos
 import csv
-
+def val_per(a):
+    try:
+        return int(a)
+    except ValueError:
+        return "NA"
 
 class Lista_Juegos:
 
@@ -69,7 +73,7 @@ class Lista_Juegos:
             next(csv_reader)
             for fila in csv_reader:
                 rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = fila
-                juego = Juegos(rank, name, platform, int(year), genre, publisher,
+                juego = Juegos(rank, name, platform, val_per(year), genre, publisher,
                                float(na_Sales), float(eu_sales), float(jp_sales), float(other_sales), float(global_sales))
                 lista_csv.append(juego)
                 lista_rank.append(int(rank))
