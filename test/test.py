@@ -45,10 +45,11 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertIsInstance(lista_names, list)
     
     def test_filtro_genero(self):
-        genero = "Shooter"
-        filtro = self.lista_juegos.filter_genre(genero).genre
-        self.assertTrue(genero == filtro)
-        print(f"Género esperado: {genero}, Género mostrado: {filtro}")
+        for i in range (len(self.lista_juegos.genero())):
+            genero = self.lista_juegos.genero()[i]
+            filtro = self.lista_juegos.filter_genre(genero).genre
+            self.assertTrue(genero == filtro)
+            print(f"Expected genre: {genero}, Actual genre: {filtro}")
         
     def test_type(self):
         for i in range(70):
