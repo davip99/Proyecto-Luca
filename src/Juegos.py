@@ -57,53 +57,6 @@ class Juegos:
         else:
             print(f"Juego '{name}' creado con éxito")
             return Juegos(name, platform, int(year), genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales)
-        """
-        if not name:
-            print("Error: El nombre del juego es obligatorio.")
-            return False
-
-        if not platform:
-            print("Error: La plataforma del juego es obligatorio.")
-            return False
-
-        if not genre:
-            print("Error: El género del juego es obligatorio.")
-            return False
-
-        if year and not year.isdigit():
-            print("Error: El año de lanzamiento debe ser un número entero.")
-            return False
-
-        try:
-            na_Sales = float(na_Sales)
-        except ValueError:
-            print("Error: Todos los valores en ventas deben ser números.")
-            return False
-
-        try:
-            eu_sales = float(eu_sales)
-        except ValueError:
-            print("Error: Todos los valores en ventas deben ser números.")
-            return False
-
-        try:
-            jp_sales = float(jp_sales)
-        except ValueError:
-            print("Error: Todos los valores en ventas deben ser números.")
-            return False
-
-        try:
-            other_sales = float(other_sales)
-        except ValueError:
-            print("Error: Todos los valores en ventas deben ser números.")
-            return False
-
-        try:
-            global_sales = float(global_sales)
-        except ValueError:
-            print("Error: Todos los valores en ventas deben ser números.")
-            return False
-            """
 
 
 # Organizar mas tarde
@@ -111,14 +64,14 @@ class Juegos:
 def input_obligatorio(texto):
     valor = input(texto)
     if len(valor.strip()) <= 0:
-        raise ValueError("Valor incorrecto, Este campo es obligatorio")
+        raise ValueError("Valor incorrecto, Este campo es obligatorio.")
     return valor
 
 def input_int(texto):
     try:
         num_int = int(input(texto))
     except ValueError:
-        raise ValueError("Valor incorrecto, se necesita un numero entero")
+        raise ValueError("Valor incorrecto, se necesita un numero entero.")
     else:
         return num_int
 
@@ -128,6 +81,6 @@ def input_float(texto):
         num_float = float(input(texto))
     except ValueError:
         raise ValueError(
-            "Valor no correcto, se necesita un numero entero o decimal")
+            "Valor no correcto, se necesita un numero entero o decimal.")
     else:
         return num_float
