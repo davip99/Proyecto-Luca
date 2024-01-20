@@ -1,26 +1,6 @@
-import control as ct
+import util as util
 from lista_juegos import Lista_Juegos
-
-
-def introducir_int(tetxo):
-    """
-    Introducir un numero entero y devolverlo
-
-    Args:
-        tetxo (str): Texto al pedir el numero
-
-    Raises:
-        ValueError: Valor introducido no es un numero entero (int)
-
-    Returns:
-        int: numero entero escrito
-    """
-    try:
-        numero = int(input(tetxo))
-    except ValueError:
-        raise ValueError
-    else:
-        return numero
+import control as ct
 
 
 def menu():
@@ -35,16 +15,16 @@ def menu():
         print("[1] Crear Juego.")
         print("[2] Listar Juegos.")
         print("[3] Listar Juegos por generos.")
-        # Opciones
+        print("---")
         print("[0] Salir")
         try:
-            opcion = introducir_int("Introduce opcion: ")
-        except ValueError:
-            print("ERROR. Valor introducido no es una opcion\n")
-        else:
+            opcion = util.input_int("Introduce opcion: ")
             if opcion < valor_minimo or opcion > valor_maximo:
-                print("ERROR. Opcion no existente\n")
-            elif opcion == 0:
+                raise ValueError
+        except ValueError:
+            print("El valor introducido no es una opcion\n")
+        else:
+            if opcion == 0:
                 print("Saliendo de la aplicacion\n")
             elif opcion == 1:
                 print("Opcion 1: Crear Juego\n")

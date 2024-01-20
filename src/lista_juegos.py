@@ -1,7 +1,7 @@
+import util as util
+from Juegos import Juegos
 import csv
 import os
-from src.Juegos import Juegos
-import src.util as util
 
 
 class Lista_Juegos:
@@ -63,7 +63,7 @@ class Lista_Juegos:
         juegos_filtrados = []
         for juego in self.lista_csv[:10]:
             if genero == juego.genre:
-                #print(juego)
+                # print(juego)
                 juegos_filtrados.append(juego)
         return juegos_filtrados
 

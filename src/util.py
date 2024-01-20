@@ -55,14 +55,14 @@ def input_float(texto):
         num_float = float(input(texto))
     except ValueError:
         raise ValueError(
-            "Valor no correcto, se necesita un numero entero o decimal.")
+            "Valor incorrecto, se necesita un numero entero o decimal.")
     else:
         return num_float
 
 
 def val_per(a):
     """
-    Introduce un valor float (numero decimal).
+    comprueba si el valor es un texto o numero
 
     Args:
         a (str): valor
