@@ -7,7 +7,7 @@ conexion = mysql.connector.connect(user='root',
                                    port='15049')
 
 
-def filtro_siglo20():
+def filtro_siglo20(cursor):
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
     nombre = 'railway'
@@ -34,3 +34,14 @@ def listar_editores():
         lista_editores.append(editor[0])
     cursor.close()
     return lista_editores
+
+def listar_juegos_nintendo():
+    lista_jeugos = []
+    cursor = conexion.cursor()
+    query = ("SELECT * FROM `Juegos` WHERE `publisher` = 'Nintendo' ORDER BY name;")
+    cursor.execute(query)
+    for  id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank)
+        lista_jeugos.append(juego)
+    cursor.close()
+    return lista_jeugos
