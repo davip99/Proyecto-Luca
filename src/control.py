@@ -43,7 +43,7 @@ def control(action):
             print("- " + editor)
 
     elif action == 6:
-        # Funcion Listar juegos de Nintendo
-        lista_juegos = bbdd.listar_juegos_nintendo()
+        # Listar juegos de Nintendo
+        lista_juegos = bbdd.listar_publisher("Nintendo")
         for juego in lista_juegos:
             print(juego)
