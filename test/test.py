@@ -76,4 +76,4 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertTrue(int(src.bbdd.filtro_siglo20().split("\n")[2].split()[1]) < 2001)
 
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
