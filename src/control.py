@@ -41,3 +41,9 @@ def control(action):
         lista_editores = bbdd.listar_editores()
         for editor in lista_editores:
             print("- " + editor)
+
+    elif action == 6:
+        # Funcion Listar juegos de Nintendo
+        lista_juegos = bbdd.listar_juegos_nintendo()
+        for juego in lista_juegos:
+            print(juego)
