@@ -31,5 +31,8 @@ def control(action):
         for game in game_filter:
             print(game)
 
-    """elif action == 4:
-            milista.filter_century20()"""
+    elif action == 4:
+        # Imprime los juegos publicados en el s. XX
+        game_filter = milista.filter_century20()
+        for game in game_filter:
+            print(game)
