@@ -72,8 +72,11 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertIsInstance(game.create_game("a","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         self.assertNotIsInstance(game.create_game(" ","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
 
-    """def test_juegos_siglo20(self):
-        self.assertTrue(int(src.bbdd.filtro_siglo20().split("\n")[2].split()[1]) < 2001)"""
+    def test_juegos_siglo20(self):
+        listado = src.bbdd.listar_siglo20()
+        for juego in listado:
+            self.assertTrue(juego.year < 2001)
+        print("Los juegos mostrados son previos al s. XXI")
 
 if __name__ == '__main__':
     unittest.main()
