@@ -1,4 +1,5 @@
 import mysql.connector
+from Juegos import Juegos
 
 conexion = mysql.connector.connect(user='root',
                                    password='FF1CD5HgBggF6Gb3B-eb6452geEHeEE5',
@@ -7,7 +8,7 @@ conexion = mysql.connector.connect(user='root',
                                    port='15049')
 
 
-def filtro_siglo20(cursor):
+def filtro_siglo20():
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
     nombre = 'railway'
