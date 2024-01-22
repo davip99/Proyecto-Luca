@@ -1,4 +1,7 @@
-import util as util
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+import src.util as util
 
 
 class Juegos:
@@ -39,18 +42,11 @@ class Juegos:
         Returns:
             str: Texto con los atributos del objeto juego.
         """
-        texto = f"Rank: {self.rank}\n Name: {self.name}\n Platform: {self.platform}\n Year: {self.year}\n Genre: {self.genre}\n Publisher: {self.publisher}\n NA_Sales: {
-            self.na_Sales}\n EU_sales: {self.eu_sales}\n JP_sales: {self.jp_sales}\n Other_sales: {self.other_sales}\n Global_sales: {self.global_sales}\n"
+        texto = f"Rank: {self.rank}\n Name: {self.name}\n Platform: {self.platform}\n Year: {self.year}\n Genre: {self.genre}\n Publisher: {self.publisher}\n NA_Sales: {self.na_Sales}\n EU_sales: {self.eu_sales}\n JP_sales: {self.jp_sales}\n Other_sales: {self.other_sales}\n Global_sales: {self.global_sales}\n"
         return texto
 
     @staticmethod
-    def create_game():
-        """
-        Crear un juego pidiendo los campos por consola.
-
-        Returns:
-            Juego: Objeto juego creado a partir de los valoes introducidos.
-        """
+    def new_game():
         try:
             name = util.input_obligatorio("Ingrese el nombre del juego: ")
             platform = util.input_obligatorio(
@@ -65,10 +61,29 @@ class Juegos:
             other_sales = util.input_float(
                 "Ingrese las ventas en otras regiones: ")
             global_sales = util.input_float("Ingrese las ventas globales: ")
-            juego = Juegos(name, platform, int(year), genre, publisher,
-                           na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+            
         except ValueError as e:
             print(str(e))
         else:
+            juego = Juegos.create_game(name, platform, year, genre, publisher,
+                        na_Sales, eu_sales, jp_sales, other_sales, global_sales)
+            return juego
+
+    @staticmethod
+    def create_game(name, platform, year, genre, publisher,
+                        na_Sales, eu_sales, jp_sales, other_sales, global_sales):
+        """
+        Crear un juego pidiendo los campos por consola.
+
+        Returns:
+            Juego: Objeto juego creado a partir de los valoes introducidos.
+        """
+        try:
+            check = util.datos_vacios(name, platform, year, genre, publisher)
+        except ValueError as e:
+            print(str(e))
+        else:
+            juego = Juegos(name, platform, int(year), genre, publisher,
+                            na_Sales, eu_sales, jp_sales, other_sales, global_sales)
             print(f"Juego '{juego.name}' creado con éxito")
             return juego

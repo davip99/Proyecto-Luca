@@ -66,6 +66,10 @@ class PruebaTestFixture(unittest.TestCase):
     def test_primer_elemento(self):
         game_to_check = game("Wii Sports","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74, "1")
         self.assertTrue(str(self.lista_juegos.lista_csv[0]) == str(game_to_check))
+
+    def test_game_atribute_null(self):
+        self.assertIsInstance(game.create_game("a","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
+        self.assertNotIsInstance(game.create_game(" ","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         
 if __name__ == '__main__':
     unittest.main() 

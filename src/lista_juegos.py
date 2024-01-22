@@ -1,5 +1,8 @@
-import util as util
-from Juegos import Juegos
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
+import src.util as util
+from src.Juegos import Juegos
 import csv
 import os
 
@@ -77,6 +80,7 @@ class Lista_Juegos:
         Returns:
             bool: True si existe el juego, False si no.
         """
+        
         for existing_game in self.lista_csv:
             if game.name == existing_game.name:
                 print("Juego duplicado")
@@ -87,14 +91,15 @@ class Lista_Juegos:
         """
         Funcion para añadir juegos a la lista de juegos.
         """
-        new_game = Juegos.create_game()
-        duplicado = self.check_duplicate_games(new_game)
+        try:
+            new_game = Juegos.new_game()
+            duplicado = self.check_duplicate_games(new_game)
 
-        if not duplicado:
-            rank = 1
-            while rank in self.lista_rank:
-                rank += 1
-            try:
+            if not duplicado:
+                rank = 1
+                while rank in self.lista_rank:
+                    rank += 1
+                
                 new_game.rank = rank
                 print(new_game)
                 guardar = input("Quieres guardar el juego(Y/N): ")
@@ -104,8 +109,8 @@ class Lista_Juegos:
                     print("Juego guardado")
                 else:
                     print("Juego no guardado")
-            except AttributeError:
-                print("Juego no guardado")
+        except AttributeError:
+            print("Juego no guardado")
 
     def verificar_csv(self, csv_path):
         return os.path.exists(csv_path)
