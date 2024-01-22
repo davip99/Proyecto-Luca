@@ -9,6 +9,9 @@ conexion = mysql.connector.connect(user='root',
 
 
 def filtro_siglo20():
+    """
+    Funcion devuelve los juegos que sean del siglo 
+    """
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
     query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
@@ -26,6 +29,12 @@ def filtro_siglo20():
 
 
 def listar_editores():
+    """
+    Funcion devuelve la lista de editores de juegos
+
+    Returns:
+        list: lista de editores
+    """
     lista_editores = []
     cursor = conexion.cursor()
     query = ("SELECT distinct(publisher) FROM `Juegos` ORDER BY publisher;")
