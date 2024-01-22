@@ -34,7 +34,7 @@ def control(action):
 
     elif action == 4:
         # Imprime los juegos publicados en el s. XX
-        bbdd.filtro_siglo20()
+        print(bbdd.filtro_siglo20())
 
     elif action == 5:
         # Listar editores
