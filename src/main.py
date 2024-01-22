@@ -2,6 +2,16 @@ import util as util
 from lista_juegos import Lista_Juegos
 import control as ct
 
+def menu_grafico():
+    """
+    Funcion imprime por consola el menu.
+    """
+    print("MENU:")
+    print("[1] Crear Juego.")
+    print("[2] Listar Juegos.(Con listas)")
+    print("[3] Listar Juegos por generos.(Con listas)")
+    print("---")
+    print("[0] Salir")
 
 def menu():
     """
@@ -11,12 +21,7 @@ def menu():
     valor_maximo = 3
     opcion = -1
     while opcion != 0:
-        print("MENU:")
-        print("[1] Crear Juego.")
-        print("[2] Listar Juegos.")
-        print("[3] Listar Juegos por generos.")
-        print("---")
-        print("[0] Salir")
+        menu_grafico()
         try:
             opcion = util.input_int("Introduce opcion: ")
             if opcion < valor_minimo or opcion > valor_maximo:
