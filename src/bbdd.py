@@ -12,18 +12,21 @@ def listar_siglo20():
     """
     Funcion devuelve los juegos que sean del siglo 
     """
+    lista_juegos = []
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
-    query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
+    query = ("SELECT * FROM Juegos "
              "WHERE year < 2001")
 
     # Ejecuta la query y muestra por pantalla los elementos seleccionados
     cursor.execute(query)
-    for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
-        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(
-            name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+    for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                       eu_sales, jp_sales, other_sales, global_sales, rank)
+        lista_juegos.append(juego)
     cursor.close()
-    return "Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales)
+    return lista_juegos
+    
 
 def listar_editores():
     """
@@ -49,7 +52,7 @@ def listar_publisher(publisher):
     Returns:
         list: lista de los juegos del publisher especificado
     """
-    lista_jeugos = []
+    lista_juegos = []
     cursor = conexion.cursor()
     query = (
         f"SELECT * FROM `Juegos` WHERE `publisher` = '{publisher}' ORDER BY name;")
@@ -57,9 +60,9 @@ def listar_publisher(publisher):
     for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
         juego = Juegos(name, platform, year, genre, publisher, na_Sales,
                        eu_sales, jp_sales, other_sales, global_sales, rank)
-        lista_jeugos.append(juego)
+        lista_juegos.append(juego)
     cursor.close()
-    return lista_jeugos
+    return lista_juegos
 
 def listar_top(lugar):
     lista_juegos = []
