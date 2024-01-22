@@ -8,7 +8,7 @@ conexion = mysql.connector.connect(user='root',
                                    port='15049')
 
 
-def filtro_siglo20():
+def listar_siglo20():
     """
     Funcion devuelve los juegos que sean del siglo 
     """
