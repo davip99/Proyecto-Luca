@@ -70,19 +70,6 @@ class Lista_Juegos:
                 juegos_filtrados.append(juego)
         return juegos_filtrados
 
-    def filter_century20(self):
-        """
-        Filtra los juegos publicados previos a la dos milesima traslacion de la Tierra tras el nacimiento del niño Jesus
-        Returns:
-
-        """
-        juegos_filtrados = []
-        for juego in self.lista_csv[:40]:
-            if juego.year < 2000:
-                #print(juego)
-                juegos_filtrados.append(juego)
-        return juegos_filtrados
-
     def check_duplicate_games(self, game):
         """
         Comprueba si existen juegos duplicados.
