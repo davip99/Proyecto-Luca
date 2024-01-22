@@ -1,5 +1,5 @@
 import mysql.connector
-from Juegos import Juegos
+from src.Juegos import Juegos
 
 conexion = mysql.connector.connect(user='root',
                                    password='FF1CD5HgBggF6Gb3B-eb6452geEHeEE5',
