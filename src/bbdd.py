@@ -17,15 +17,13 @@ def filtro_siglo20():
     query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
              "WHERE year < 2001")
 
-    #Ejecuta la query y muestra por pantalla los elementos seleccionados
+    # Ejecuta la query y muestra por pantalla los elementos seleccionados
     cursor.execute(query)
     for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
-        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
-    return "Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales)
-
-    # Cierra la conexion
+        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(
+            name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
     cursor.close()
-    conexion.close()
+    return "Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales)
 
 
 def listar_editores():
@@ -54,7 +52,8 @@ def listar_publisher(publisher):
     """
     lista_jeugos = []
     cursor = conexion.cursor()
-    query = (f"SELECT * FROM `Juegos` WHERE `publisher` = '{publisher}' ORDER BY name;")
+    query = (
+        f"SELECT * FROM `Juegos` WHERE `publisher` = '{publisher}' ORDER BY name;")
     cursor.execute(query)
     for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
         juego = Juegos(name, platform, year, genre, publisher, na_Sales,
