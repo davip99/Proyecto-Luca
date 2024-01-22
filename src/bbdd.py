@@ -9,6 +9,9 @@ conexion = mysql.connector.connect(user='root',
 
 
 def filtro_siglo20():
+    """
+    Funcion Filtrar de la BBDD los juegos que sena del siglo 20
+    """
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
     nombre = 'railway'
@@ -16,14 +19,14 @@ def filtro_siglo20():
     query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
              "WHERE year < 2001")
 
-    #Ejecuta la query y muestra por pantalla los elementos seleccionados
+    # Ejecuta la query y muestra por pantalla los elementos seleccionados
     cursor.execute(query)
     for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
-        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(
+            name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
 
     # Cierra la conexion
     cursor.close()
-    conexion.close()
 
 
 def listar_editores():
@@ -36,13 +39,15 @@ def listar_editores():
     cursor.close()
     return lista_editores
 
+
 def listar_juegos_nintendo():
     lista_jeugos = []
     cursor = conexion.cursor()
     query = ("SELECT * FROM `Juegos` WHERE `publisher` = 'Nintendo' ORDER BY name;")
     cursor.execute(query)
-    for  id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
-        juego = Juegos(name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank)
+    for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                       eu_sales, jp_sales, other_sales, global_sales, rank)
         lista_jeugos.append(juego)
     cursor.close()
     return lista_jeugos
