@@ -34,9 +34,7 @@ def control(action):
 
     elif action == 4:
         # Imprime los juegos publicados en el s. XX
-        game_filter = milista.filter_century20()
-        for game in game_filter:
-            print(game)
+        bbdd.filtro_siglo20()
 
     elif action == 5:
         # Listar editores

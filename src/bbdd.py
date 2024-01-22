@@ -7,15 +7,20 @@ conexion = mysql.connector.connect(user='root',
                                    port='15049')
 
 
-def filtro_siglo20(cursor):
+def filtro_siglo20():
+    # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
-    query = ("SELECT name, platform, year, genre, publisher FROM Juegos "
+    nombre = 'railway'
+    cursor.execute("USE {}".format(nombre))
+    query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
              "WHERE year < 2001")
-    cursor.execute(query)
-    for (name, platform, year, genre, publisher) in cursor:
-        print("{}, {}, {}, {}, {}".format(
-            name, platform, year, genre, publisher))
 
+    #Ejecuta la query y muestra por pantalla los elementos seleccionados
+    cursor.execute(query)
+    for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
+        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+
+    # Cierra la conexion
     cursor.close()
     conexion.close()
 
