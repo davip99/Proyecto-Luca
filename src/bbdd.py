@@ -17,10 +17,11 @@ def filtro_siglo20():
     cursor.execute(query)
     for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
         result = print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+    cursor.close()
     return "Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales)
 
-    # Cierra la conexion
-    cursor.close()
+   
+    
     conexion.close()
 
 def listar_editores():
@@ -32,4 +33,14 @@ def listar_editores():
         lista_editores.append(editor[0])
     cursor.close()
     return lista_editores
-print(filtro_siglo20())
+
+def listar_juegos_nintendo():
+    lista_jeugos = []
+    cursor = conexion.cursor()
+    query = ("SELECT * FROM `Juegos` WHERE `publisher` = 'Nintendo' ORDER BY name;")
+    cursor.execute(query)
+    for  id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank)
+        lista_jeugos.append(juego)
+    cursor.close()
+    return lista_jeugos
