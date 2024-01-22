@@ -36,10 +36,16 @@ def listar_editores():
     return lista_editores
 
 
-def listar_juegos_nintendo():
+def listar_publisher(publisher):
+    """
+    Funcion devuelve la lista de juegos de un publisher especificado.
+
+    Returns:
+        list: lista de los juegos del publisher especificado
+    """
     lista_jeugos = []
     cursor = conexion.cursor()
-    query = ("SELECT * FROM `Juegos` WHERE `publisher` = 'Nintendo' ORDER BY name;")
+    query = (f"SELECT * FROM `Juegos` WHERE `publisher` = '{publisher}' ORDER BY name;")
     cursor.execute(query)
     for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
         juego = Juegos(name, platform, year, genre, publisher, na_Sales,
