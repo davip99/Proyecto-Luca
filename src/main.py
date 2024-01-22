@@ -6,11 +6,13 @@ def menu_grafico():
     """
     Funcion imprime por consola el menu.
     """
+    print("\n")
     print("MENU:")
     print("[1] Crear Juego.")
     print("[2] Listar Juegos.(Con listas)")
     print("[3] Listar Juegos por generos.(Con listas)")
-    print("[4] Listar Juegos del s. XX.(Con listas)")
+    print("[4] Listar Juegos del s. XX.(Con BBDD)")
+    print("[5] Listar editores. (Con BBDD)")
     print("---")
     print("[0] Salir")
 
@@ -19,7 +21,7 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 4
+    valor_maximo = 5
     opcion = -1
     while opcion != 0:
         menu_grafico()
@@ -48,6 +50,10 @@ def menu():
                 print("Opcion 4: Listar Juegos previos al s. XX\n")
                 # Funcion Listar Juegos por anio
                 ct.control(4)
+            elif opcion == 5:
+                print("Opcion 5: Listar editores.\n")
+                # Funcion Listar Juegos por anio
+                ct.control(5)
 
 
 if __name__ == '__main__':

@@ -22,6 +22,15 @@ def filtro_siglo20(cursor):
     cursor.close()
     conexion.close()
 
+def listar_editores():
+    lista_editores=[]
+    query = ("SELECT distinct(publisher) FROM `Juegos` ORDER BY publisher;")
+    cursor.execute(query)
+    for editor in cursor:
+        lista_editores.append(editor[0])
+    cursor.close()
+    return lista_editores
+
 filtro_siglo20(cursor)
 
 

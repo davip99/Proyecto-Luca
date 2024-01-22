@@ -1,6 +1,7 @@
 
 import sys
 from pathlib import Path
+import bbdd
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from src.lista_juegos import Lista_Juegos as lj
 
@@ -36,3 +37,9 @@ def control(action):
         game_filter = milista.filter_century20()
         for game in game_filter:
             print(game)
+
+    elif action == 5:
+        # Listar editores
+        lista_editores = bbdd.listar_editores()
+        for editor in lista_editores:
+            print("- " + editor)
