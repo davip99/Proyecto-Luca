@@ -9,24 +9,20 @@ conexion = mysql.connector.connect(user='root',
 
 
 def filtro_siglo20():
-    """
-    Funcion Filtrar de la BBDD los juegos que sena del siglo 20
-    """
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()
-    nombre = 'railway'
-    cursor.execute("USE {}".format(nombre))
     query = ("SELECT name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales FROM Juegos "
              "WHERE year < 2001")
 
-    # Ejecuta la query y muestra por pantalla los elementos seleccionados
+    #Ejecuta la query y muestra por pantalla los elementos seleccionados
     cursor.execute(query)
     for (name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales) in cursor:
-        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(
-            name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+        print("Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales))
+    return "Name: {}\n Platform: {}\n Year: {}\n Genre: {}\n Publlisher: {}\n NA_sales: {}\n EU_sales: {}\n JP_sales: {}\n Other_sales: {}\n Global_sales: {}\n".format(name, platform, year, genre, publisher, na_sales, eu_sales, jp_sales, other_sales, global_sales)
 
     # Cierra la conexion
     cursor.close()
+    conexion.close()
 
 
 def listar_editores():
