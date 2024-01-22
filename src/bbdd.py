@@ -26,6 +26,9 @@ def listar_siglo20():
     cursor.close()
     return lista_juegos
 
+   
+    
+    conexion.close()
 
 def listar_editores():
     lista_editores = []

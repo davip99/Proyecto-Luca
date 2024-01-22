@@ -4,6 +4,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from src.lista_juegos import Lista_Juegos as lj
 from src.Juegos import Juegos as game
+import src.bbdd
 
 class PruebaTestFixture(unittest.TestCase):
 
@@ -70,6 +71,9 @@ class PruebaTestFixture(unittest.TestCase):
     def test_game_atribute_null(self):
         self.assertIsInstance(game.create_game("a","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         self.assertNotIsInstance(game.create_game(" ","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
-        
+
+    def test_juegos_siglo20(self):
+        self.assertTrue(int(src.bbdd.filtro_siglo20().split("\n")[2].split()[1]) < 2001)
+
 if __name__ == '__main__':
-    unittest.main() 
+    unittest.main()
