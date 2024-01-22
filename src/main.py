@@ -10,6 +10,7 @@ def menu_grafico():
     print("[1] Crear Juego.")
     print("[2] Listar Juegos.(Con listas)")
     print("[3] Listar Juegos por generos.(Con listas)")
+    print("[4] Listar Juegos del s. XX.(Con listas)")
     print("---")
     print("[0] Salir")
 
@@ -18,7 +19,7 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 3
+    valor_maximo = 4
     opcion = -1
     while opcion != 0:
         menu_grafico()
@@ -43,6 +44,10 @@ def menu():
                 print("Opcion 3: Listar Juegos por genero\n")
                 # Funcion Listar Juegos por género
                 ct.control(3)
+            elif opcion == 4:
+                print("Opcion 4: Listar Juegos previos al s. XX\n")
+                # Funcion Listar Juegos por anio
+                ct.control(4)
 
 
 if __name__ == '__main__':
