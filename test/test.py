@@ -115,21 +115,5 @@ class PruebaTestFixture(unittest.TestCase):
         print("\nLos valores de ventas estan correctamente ordenados\n")
         
 
-        """
-        def test_provisional(self):
-        for juego in b[0]:
-                valores_ventas.append(juego.na_Sales)
-        a = src.bbdd.listar_top('na_sales')
-        top_na_sales = []
-        for juego in a:
-            top_na_sales.append(juego[6])
-        b = src.lista_juegos.Lista_Juegos.convert_csv_list("src/csv/vgsales.csv")
-        valores_ventas = []
-        valores_ventas = sorted(valores_ventas, reverse=True)
-        #print(valores_ventas[:5])
-        #print(top_na_sales)
-        self.assertTrue(top_na_sales == valores_ventas[:5])
-        """
-
 if __name__ == '__main__':
     unittest.main()
