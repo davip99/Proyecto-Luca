@@ -66,7 +66,7 @@ class PruebaTestFixture(unittest.TestCase):
             year = self.lista_juegos.lista_csv[i].year
             ventas = self.lista_juegos.lista_csv[i].na_Sales
             self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and (isinstance(year, str) or isinstance(year, int)) and isinstance(ventas, float))
-        print(f"Los tipos de las variables corresponden con lo esperado")
+        print(f"\nLos tipos de las variables corresponden con lo esperado\n")
 
     def test_primer_elemento(self):
         game_to_check = game("Wii Sports","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74, "1")
@@ -100,6 +100,7 @@ class PruebaTestFixture(unittest.TestCase):
     def test_juegos_publisher(self):
         listado = src.bbdd.listar_publisher("Prueba123")
         self.assertTrue(len(listado)==0)
+        print("\nNo se devuelven datos de publishers desconocidos\n")
 
 if __name__ == '__main__':
     unittest.main()
