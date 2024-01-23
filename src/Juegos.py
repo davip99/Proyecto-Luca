@@ -42,7 +42,13 @@ class Juegos:
         Returns:
             str: Texto con los atributos del objeto juego.
         """
-        texto = f"Rank: {self.rank}\n Name: {self.name}\n Platform: {self.platform}\n Year: {self.year}\n Genre: {self.genre}\n Publisher: {self.publisher}\n NA_Sales: {self.na_Sales}\n EU_sales: {self.eu_sales}\n JP_sales: {self.jp_sales}\n Other_sales: {self.other_sales}\n Global_sales: {self.global_sales}\n"
+        texto = (
+            f"Rank: {self.rank}\n Name: {self.name}\n Platform: {self.platform}\n "
+            f"Year: {self.year}\n Genre: {self.genre}\n Publisher: {self.publisher}\n "
+            f"NA_Sales: {self.na_Sales}\n EU_sales: {self.eu_sales}\n "
+            f"JP_sales: {self.jp_sales}\n Other_sales: {self.other_sales}\n "
+            f"Global_sales: {self.global_sales}\n"
+        )
         return texto
 
     @staticmethod
