@@ -78,10 +78,12 @@ def val_per(a):
 
 def datos_vacios(name, platform, year, genre, publisher):
     resultado = True
-    valor = [name, platform, year, genre, publisher]
+    valor = [name, platform, genre, publisher]
     for datos in valor:
         if len(datos.strip()) <= 0:
             resultado = False
+    if not(isinstance(year, int)):
+        resultado = False
     if resultado == False:
         raise ValueError("Error, datos obligatorios vacios")
     return resultado

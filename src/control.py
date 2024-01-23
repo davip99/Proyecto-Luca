@@ -1,9 +1,8 @@
-
-from src.lista_juegos import Lista_Juegos as lj
 import sys
 from pathlib import Path
-import bbdd
 sys.path.append(str(Path(__file__).resolve().parent.parent))
+from src.lista_juegos import Lista_Juegos as lj
+import bbdd
 
 milista = lj("src/csv/vgsales.csv")
 

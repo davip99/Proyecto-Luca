@@ -1,10 +1,10 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 import os
 import csv
 from src.Juegos import Juegos
 import src.util as util
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
 
 
 class Lista_Juegos:
