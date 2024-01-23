@@ -84,5 +84,9 @@ class PruebaTestFixture(unittest.TestCase):
             self.assertTrue(juego.year < 2001)
         print("\nLos juegos mostrados son previos al s. XXI\n")
 
+    def test_juegos_publisher(self):
+        listado = src.bbdd.listar_publisher("Prueba123")
+        self.assertTrue()(len(listado)==0)
+
 if __name__ == '__main__':
     unittest.main()
