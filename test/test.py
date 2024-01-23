@@ -86,7 +86,7 @@ class PruebaTestFixture(unittest.TestCase):
 
     def test_juegos_publisher(self):
         listado = src.bbdd.listar_publisher("Prueba123")
-        self.assertTrue()(len(listado)==0)
+        self.assertTrue(len(listado)==0)
 
 if __name__ == '__main__':
     unittest.main()
