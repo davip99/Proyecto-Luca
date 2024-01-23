@@ -102,5 +102,15 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertTrue(len(listado)==0)
         print("\nNo se devuelven datos de publishers desconocidos\n")
 
+    def test_top_sales(self):
+        listado = src.bbdd.listar_top("na_sales")
+        test = True
+        na_sales_max = listado[0][6]
+        for fila in listado:
+            if fila[6] > na_sales_max:
+                test = False
+            na_sales_max = fila[6]
+        self.assertTrue(test)
+
 if __name__ == '__main__':
     unittest.main()
