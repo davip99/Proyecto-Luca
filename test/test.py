@@ -86,9 +86,8 @@ class PruebaTestFixture(unittest.TestCase):
 
     def test_suma_juegos_nintendo(self):
         cursor = src.bbdd.conexion.cursor()
-        query = ("select count(publisher) from Juegos where publisher = 'Nintendo';")
-        cursor.execute(query) #703
-        total_nintendo = cursor.fetchone()[0]
+        query = src.bbdd.listar_publisher('Nintendo')
+        total_nintendo = len(query)
         query2 = ("select count(publisher), platform from Juegos where publisher = 'Nintendo' group by platform;")
         cursor.execute(query2)
         total_plataforma = 0
