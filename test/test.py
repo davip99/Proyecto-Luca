@@ -111,5 +111,21 @@ class PruebaTestFixture(unittest.TestCase):
             na_sales_max = fila[6]
         self.assertTrue(test)
 
+        """
+        def test_provisional(self):
+        b = src.lista_juegos.Lista_Juegos.convert_csv_list("src/csv/vgsales.csv")
+        valores_ventas = []
+        for juego in b[0]:
+                valores_ventas.append(juego.na_Sales)
+        a = src.bbdd.listar_top('na_sales')
+        top_na_sales = []
+        for juego in a:
+            top_na_sales.append(juego[6])
+        valores_ventas = sorted(valores_ventas, reverse=True)
+        #print(valores_ventas[:5])
+        #print(top_na_sales)
+        self.assertTrue(top_na_sales == valores_ventas[:5])
+        """
+
 if __name__ == '__main__':
     unittest.main()
