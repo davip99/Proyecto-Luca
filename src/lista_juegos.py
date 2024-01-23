@@ -1,10 +1,10 @@
+import os
+import csv
+from src.Juegos import Juegos
+import src.util as util
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-import src.util as util
-from src.Juegos import Juegos
-import csv
-import os
 
 
 class Lista_Juegos:
@@ -80,7 +80,7 @@ class Lista_Juegos:
         Returns:
             bool: True si existe el juego, False si no.
         """
-        
+
         for existing_game in self.lista_csv:
             if game.name == existing_game.name:
                 print("Juego duplicado")
@@ -99,7 +99,7 @@ class Lista_Juegos:
                 rank = 1
                 while rank in self.lista_rank:
                     rank += 1
-                
+
                 new_game.rank = rank
                 print(new_game)
                 guardar = input("Quieres guardar el juego(Y/N): ")

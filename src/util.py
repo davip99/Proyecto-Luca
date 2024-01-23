@@ -74,7 +74,8 @@ def val_per(a):
         return int(a)
     except ValueError:
         return "NA"
-    
+
+
 def datos_vacios(name, platform, year, genre, publisher):
     resultado = True
     valor = [name, platform, year, genre, publisher]
@@ -84,4 +85,3 @@ def datos_vacios(name, platform, year, genre, publisher):
     if resultado == False:
         raise ValueError("Error, datos obligatorios vacios")
     return resultado
-

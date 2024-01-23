@@ -1,11 +1,12 @@
 
+from src.lista_juegos import Lista_Juegos as lj
 import sys
 from pathlib import Path
 import bbdd
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from src.lista_juegos import Lista_Juegos as lj
 
 milista = lj("src/csv/vgsales.csv")
+
 
 def control(action):
     """
@@ -49,7 +50,7 @@ def control(action):
         lista_juegos = bbdd.listar_publisher("Nintendo")
         for juego in lista_juegos:
             print(juego)
-    
+
     elif action == 7:
         lugar = int(input("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL "))
         if lugar == 1:
@@ -64,7 +65,7 @@ def control(action):
         elif lugar == 4:
             lista_juegos = bbdd.listar_top(lugar='global_sales')
             lugar_str = 'Ventas GLOBAL'
-            
+
         for juego in lista_juegos:
             print(f"Rank: {juego[0]}")
             print(f"Nombre: {juego[1]}")

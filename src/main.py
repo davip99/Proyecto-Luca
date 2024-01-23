@@ -2,6 +2,7 @@ import util as util
 from lista_juegos import Lista_Juegos
 import control as ct
 
+
 def menu_grafico():
     """
     Funcion imprime por consola el menu.
@@ -17,6 +18,7 @@ def menu_grafico():
     print("[7] Listar los 5 juegos mas vendidos en NA. (Con BBDD)")
     print("---")
     print("[0] Salir")
+
 
 def menu():
     """

@@ -26,7 +26,7 @@ def listar_siglo20():
         lista_juegos.append(juego)
     cursor.close()
     return lista_juegos
-    
+
 
 def listar_editores():
     """
@@ -66,6 +66,7 @@ def listar_publisher(publisher):
         lista_juegos.append(juego)
     cursor.close()
     return lista_juegos
+
 
 def listar_top(lugar):
     """
