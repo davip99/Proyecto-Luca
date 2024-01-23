@@ -19,7 +19,7 @@ class PruebaTestFixture(unittest.TestCase):
     #Antes de cada test
     def setUp(self):
         print("-- Preparando el contexto del text")
-        csv_path = "../src/csv/vgsales.csv"
+        csv_path = "src/csv/vgsales.csv"
         self.lista_juegos = lj(csv_path)
         
     #Despues de cada test
@@ -36,7 +36,7 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertTrue(self.lista_juegos.check_duplicate_games(game_to_check))
 
     def test_check_csv(self):
-        csv = "../src/csv/vgsales.csv"
+        csv = "src/csv/vgsales.csv"
         self.assertTrue(self.lista_juegos.verificar_csv(csv))
         lista_csv, lista_rank, lista_names = self.lista_juegos.convert_csv_list(csv)
 
