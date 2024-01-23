@@ -83,5 +83,19 @@ class PruebaTestFixture(unittest.TestCase):
             self.assertTrue(juego.year < 2001)
         print("\nLos juegos mostrados son previos al s. XXI\n")
 
+    def test_suma_juegos_nintendo(self):
+        cursor = src.bbdd.conexion.cursor()
+        query = ("select count(publisher) from Juegos where publisher = 'Nintendo';")
+        cursor.execute(query) #703
+        total_nintendo = cursor.fetchone()[0]
+        query2 = ("select count(publisher), platform from Juegos where publisher = 'Nintendo' group by platform;")
+        cursor.execute(query2)
+        total_plataforma = 0
+        for count, b in cursor:
+            total_plataforma += count
+        self.assertEqual(total_nintendo, total_plataforma)
+        print("\nLa suma de los juegos de Nintendo es igual a los juegos de sus plataformas\n")
+
+
 if __name__ == '__main__':
     unittest.main()
