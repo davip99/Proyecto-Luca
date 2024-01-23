@@ -30,10 +30,12 @@ class PruebaTestFixture(unittest.TestCase):
     def test_elemento_concreto(self):
         game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
         self.assertTrue(self.lista_juegos.exist(game_to_check))
+        print("\nElemento concreto existe\n")
 
     def test_check_duplicate(self):
         game_to_check = game("Super Mario Bros.","NES","1985","Platform","Nintendo",29.08,3.58,6.81,0.77,40.24, "2")
         self.assertTrue(self.lista_juegos.check_duplicate_games(game_to_check))
+        print("\nJuego duplicado\n")
 
     def test_check_csv(self):
         csv = "src/csv/vgsales.csv"
@@ -44,6 +46,7 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertIsInstance(lista_csv, list)
         self.assertIsInstance(lista_rank, list)
         self.assertIsInstance(lista_names, list)
+        print("\nTodas las listas son instancias de la clase list\n")
     
     def test_filtro_genero(self):
         genero = "Platform"
@@ -53,7 +56,7 @@ class PruebaTestFixture(unittest.TestCase):
             if f.genre in salida_esperada.genre:
                 print(f)
         self.assertTrue(f.genre == salida_esperada.genre)
-        print(f"Género esperado: {genero}, Género mostrado: {f.genre}")
+        print(f"\nGénero esperado: {genero}, Género mostrado: {f.genre}\n")
         
     def test_type(self):
         for i in range(70):
@@ -62,21 +65,23 @@ class PruebaTestFixture(unittest.TestCase):
             year = self.lista_juegos.lista_csv[i].year
             ventas = self.lista_juegos.lista_csv[i].na_Sales
             self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and isinstance(year, int) and isinstance(ventas, float))
-        print(f"Los tipos de las variables corresponden con lo esperado")
+        print(f"\nLos tipos de las variables corresponden con lo esperado\n")
 
     def test_primer_elemento(self):
         game_to_check = game("Wii Sports","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74, "1")
         self.assertTrue(str(self.lista_juegos.lista_csv[0]) == str(game_to_check))
+        print("\nPrimer elemento existe\n")
 
     def test_game_atribute_null(self):
         self.assertIsInstance(game.create_game("a","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         self.assertNotIsInstance(game.create_game(" ","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
+        print("\nError al introducir un juego con atributos null\n")
 
     def test_juegos_siglo20(self):
         listado = src.bbdd.listar_siglo20()
         for juego in listado:
             self.assertTrue(juego.year < 2001)
-        print("Los juegos mostrados son previos al s. XXI")
+        print("\nLos juegos mostrados son previos al s. XXI\n")
 
 if __name__ == '__main__':
     unittest.main()
