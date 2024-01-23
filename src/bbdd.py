@@ -49,6 +49,9 @@ def listar_publisher(publisher):
     """
     Funcion devuelve la lista de juegos de un publisher especificado.
 
+    Args:
+        publisher (str): publisher que se desea buscar
+
     Returns:
         list: lista de los juegos del publisher especificado
     """
@@ -65,6 +68,15 @@ def listar_publisher(publisher):
     return lista_juegos
 
 def listar_top(lugar):
+    """
+    Funcion devuelve la lista de top ventas de juegos de un lugar.
+
+    Args:
+        lugar (str): Lugar deseado
+
+    Returns:
+        list: lista de top ventas de juegos del lugar especificado
+    """
     lista_juegos = []
     # Establece conexion con la base de datos y prepara la query
     cursor = conexion.cursor()

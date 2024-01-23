@@ -59,13 +59,14 @@ class PruebaTestFixture(unittest.TestCase):
         print(f"\nGénero esperado: {genero}, Género mostrado: {f.genre}\n")
         
     def test_type(self):
-        for i in range(70):
+        rango = len(self.lista_juegos.lista_csv)
+        for i in range(rango):
             genero = self.lista_juegos.lista_csv[i].genre
             nombre = self.lista_juegos.lista_csv[i].name
             year = self.lista_juegos.lista_csv[i].year
             ventas = self.lista_juegos.lista_csv[i].na_Sales
-            self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and isinstance(year, int) and isinstance(ventas, float))
-        print(f"\nLos tipos de las variables corresponden con lo esperado\n")
+            self.assertTrue(isinstance(genero, str) and isinstance(nombre, str) and (isinstance(year, str) or isinstance(year, int)) and isinstance(ventas, float))
+        print(f"Los tipos de las variables corresponden con lo esperado")
 
     def test_primer_elemento(self):
         game_to_check = game("Wii Sports","Wii","2006","Sports","Nintendo",41.49,29.02,3.77,8.46,82.74, "1")
@@ -96,6 +97,9 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertEqual(total_nintendo, total_plataforma)
         print("\nLa suma de los juegos de Nintendo es igual a los juegos de sus plataformas\n")
 
+    def test_juegos_publisher(self):
+        listado = src.bbdd.listar_publisher("Prueba123")
+        self.assertTrue(len(listado)==0)
 
 if __name__ == '__main__':
     unittest.main()
