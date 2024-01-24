@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from src.lista_juegos import Lista_Juegos as lj
+import src.juegos_pandas as jpandas
 import bbdd
 
 milista = lj("src/csv/vgsales.csv")
@@ -74,3 +75,6 @@ def control(action):
             print(f"Publisher: {juego[5]}")
             print(f"{lugar_str}: {juego[6]}")
             print("-" * 20)
+    
+    elif action == 8:
+        jpandas.csv_pandas()
