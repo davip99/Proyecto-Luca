@@ -102,6 +102,7 @@ def control(action):
         jpandas.csv_pandas()
     
     elif action == 9:
+        #Actualizar juego
         try:
             nombre = util.input_obligatorio(
                 "Introduce nombre del juego que deseas modificar: ")
@@ -159,3 +160,7 @@ def control(action):
         lista_juegos = bbdd.filter_years_even()
         for juego in lista_juegos:
             print(juego)
+
+    elif action == 12:
+        # Listar juegos con ventas por encima de la media en el lugar de referencia
+        pass

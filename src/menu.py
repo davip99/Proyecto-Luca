@@ -19,6 +19,7 @@ def menu_grafico():
     print("[9] Actualizar Juego (Con BBDD)")
     print("[10] Borrar un juego de la base de datos")
     print("[11] Listar los juegos publicados en años pares")
+    print("[12] juegos con ventas por encima de la media en un lugar")
     print("---")
     print("[0] Salir")
 
@@ -28,7 +29,7 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 11
+    valor_maximo = 12
     opcion = -1
     while opcion != 0:
         menu_grafico()
@@ -74,8 +75,8 @@ def menu():
                 # Funcion listar juegos pandas
                 ct.control(8)
             elif opcion == 9:
-                print("[9] Actualizar juego\n")
-                # Funcion listar juegos pandas
+                print("Opcion 9 Actualizar juego\n")
+                # Funcion Actualizar juego
                 ct.control(9)
             elif opcion == 10:
                 print("Opcion 10: Borrar un juego de la base de datos\n")
@@ -85,3 +86,8 @@ def menu():
                 print("Opcion 11: Listar los juegos publicados en años pares\n")
                 # Funcion listar juegos de años pares
                 ct.control(11)
+            elif opcion == 12:
+                print(
+                    "Opcion 12: juegos con ventas por encima de la media en el lugar de referencia\n")
+                # Muestra los juegos con ventas por encima de la media en el lugar de referencia
+                ct.control(12)
