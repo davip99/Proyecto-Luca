@@ -180,3 +180,4 @@ def actualizar(juego, new_juego):
     query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
     cursor.execute(query2)
     conexion.commit()
+    cursor.close()
