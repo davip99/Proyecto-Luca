@@ -145,3 +145,38 @@ def filter_years_even():
         cursor.close()
 
     return lista_juegos
+
+def buscar_nombre(nombre):
+    """
+    Funcion devuelve la lista de juegos con el nombre especificado.
+
+    Args:
+        nombre (str): nombre que se desea buscar
+
+    Returns:
+        list: lista de los juegos del nombre especificado
+    """
+    lista_juegos = []
+    cursor = conexion.cursor()
+    query = (
+        f"SELECT * FROM `Juegos` WHERE `name` = '{nombre}' ORDER BY Year;")
+    cursor.execute(query)
+    for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                       eu_sales, jp_sales, other_sales, global_sales, rank, id)
+        lista_juegos.append(juego)
+    cursor.close()
+    return lista_juegos
+
+def actualizar(juego, new_juego):
+    """
+    Actualiza el juego con uno nuevo en la bbdd
+
+    Args:
+        juego (Juego): Juego antiguo
+        new_juego (Juego): juego nuevo
+    """
+    cursor = conexion.cursor()
+    query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
+    cursor.execute(query2)
+    conexion.commit()

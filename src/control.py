@@ -4,6 +4,7 @@ sys.path.append(str(Path(__file__).resolve().parent.parent))
 from src.lista_juegos import Lista_Juegos as lj
 import src.juegos_pandas as jpandas
 import src.util as util
+from src.Juegos import Juegos
 import bbdd
 
 milista = lj("src/csv/vgsales.csv")
@@ -100,6 +101,48 @@ def control(action):
         # Listar los 25 primeros juegos con pandas
         jpandas.csv_pandas()
     
+    elif action == 9:
+        try:
+            nombre = util.input_obligatorio(
+                "Introduce nombre del juego que deseas modificar: ")
+            lista_juegos = bbdd.buscar_nombre(nombre)
+            if len(lista_juegos) > 1:
+                opcion = 0
+                for juego in lista_juegos:
+                    opcion += 1
+                    print(f"opcion {opcion}")
+                    print(juego)
+                index = util.input_int(
+                    "Existen varios juegos con el mismo nombre elige una opcion: ")
+                if ((index) > len(lista_juegos)) and ((index) < len(lista_juegos)):
+                    raise ValueError("Valor fuera de rango")
+                else:
+                    print(f"opcion {index}")
+                    juego = lista_juegos[index-1]
+            else:
+                juego = lista_juegos[0]
+                print(juego)
+                
+            print("Introduce el nuevo juego a modificar")
+            new_juego = Juegos.new_game()
+            print("Juego antiguo:")
+            print(juego)
+            print("Nuevo juego:")
+            print(new_juego)
+            confirmar = input("Desea guardarlo Y/N: ")
+            if confirmar == "Y":
+                print("Juego guardado")
+                bbdd.actualizar(juego, new_juego)
+            elif confirmar == "N":
+                print("Juego no guardado")
+            else:
+                print("Opcion no valida")
+                print("Juego no guardado")
+        except ValueError as e:
+            print(e)
+        except IndexError:
+            print("Juego no existente")
+
     elif action == 10:
         # Eliminar un juego de la bbdd
         try:

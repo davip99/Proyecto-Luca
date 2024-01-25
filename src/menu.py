@@ -72,6 +72,10 @@ def menu():
                 print("Opcion 8 Listar los 25 juegos usando pandas\n")
                 # Funcion listar juegos pandas
                 ct.control(8)
+            elif opcion == 9:
+                print("[9] Actualizar juego\n")
+                # Funcion listar juegos pandas
+                ct.control(9)
             elif opcion == 10:
                 print("Opcion 10: Borrar un juego de la base de datos\n")
                 # Funcion borrar juego
