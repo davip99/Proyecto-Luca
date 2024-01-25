@@ -65,6 +65,8 @@ def control(action):
         elif lugar == 4:
             lista_juegos = bbdd.listar_top(lugar='global_sales')
             lugar_str = 'Ventas GLOBAL'
+        else:
+            print("Valor fuera fuera de rango")
 
         for juego in lista_juegos:
             print(f"Rank: {juego[0]}")
