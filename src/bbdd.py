@@ -1,11 +1,18 @@
 import mysql.connector
 from src.Juegos import Juegos
+import configparser
 
-conexion = mysql.connector.connect(user='root',
-                                   password='FF1CD5HgBggF6Gb3B-eb6452geEHeEE5',
-                                   host='roundhouse.proxy.rlwy.net',
-                                   database='railway',
-                                   port='15049')
+config = configparser.ConfigParser()
+config.read("src/csv/config.properties")
+
+user = config.get("BBDD", "user")
+password = config.get("BBDD", "password")
+host = config.get("BBDD", "host")
+database = config.get("BBDD", "database")
+port = config.get("BBDD", "port")
+
+conexion = mysql.connector.connect(
+    user=user, password=password, host=host, database=database, port=port)
 
 
 def listar_siglo20():
