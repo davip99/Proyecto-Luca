@@ -16,7 +16,7 @@ def menu_grafico():
     print("[6] Listar juegos de Nintendo. (Con BBDD)")
     print("[7] Listar los 5 juegos mas vendidos en cada region. (Con BBDD)")
     print("[8] Listar los 25 juegos usando pandas")
-    print("[9] Actualizar Juego")
+    print("[9] Actualizar Juego (Con BBDD)")
     print("[10] Borrar un juego de la base de datos")
     print("[11] Listar los juegos publicados en años pares")
     print("---")
