@@ -3,6 +3,7 @@ from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
 from src.lista_juegos import Lista_Juegos as lj
 import src.juegos_pandas as jpandas
+import src.util as util
 import bbdd
 
 milista = lj("src/csv/vgsales.csv")
@@ -71,7 +72,7 @@ def control(action):
             print(juego)
 
     elif action == 7:
-        lugar = int(input("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL "))
+        lugar = util.input_int("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
         if lugar == 1:
             lista_juegos = bbdd.listar_top(lugar='na_sales')
             lugar_str = 'Ventas NA'
