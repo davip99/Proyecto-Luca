@@ -98,3 +98,10 @@ def listar_top(lugar):
     # Cierra la conexion y devuelve lista_juegos
     cursor.close()
     return lista_juegos
+
+def borrar_juego(juego):
+    cursor = conexion.cursor()
+    query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juego))
+    cursor.execute(query)
+    cursor.close
+    print("Juego eliminado")

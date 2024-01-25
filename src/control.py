@@ -17,7 +17,15 @@ def mostrar_datos(lista_juegos, lugar_str):
         lista_juegos (list): lista de los jeugos
         lugar_str (str): lugar
     """
-    
+    for juego in lista_juegos:
+            print(f"Rank: {juego[0]}")
+            print(f"Nombre: {juego[1]}")
+            print(f"Plataforma: {juego[2]}")
+            print(f"Año: {juego[3]}")
+            print(f"Género: {juego[4]}")
+            print(f"Publisher: {juego[5]}")
+            print(f"{lugar_str}: {juego[6]}")
+            print("-" * 20)
 
 
 def control(action):
@@ -89,3 +97,7 @@ def control(action):
     
     elif action == 8:
         jpandas.csv_pandas()
+    
+    elif action == 10:
+        juego = util.input_int("Introduce el rank del juego que quieres eliminar")
+        bbdd.borrar_juego(juego)

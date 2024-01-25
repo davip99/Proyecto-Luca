@@ -14,8 +14,9 @@ def menu_grafico():
     print("[4] Listar Juegos del s. XX.(Con BBDD)")
     print("[5] Listar editores. (Con BBDD)")
     print("[6] Listar juegos de Nintendo. (Con BBDD)")
-    print("[7] Listar los 5 juegos mas vendidos en NA. (Con BBDD)")
+    print("[7] Listar los 5 juegos mas vendidos en cada region. (Con BBDD)")
     print("[8] Listar los 25 juegos usando pandas")
+    print("[10] Borrar un juego de la base de datos")
     print("---")
     print("[0] Salir")
 
@@ -25,7 +26,7 @@ def menu():
     Funcion Menu. Muestra el menu y navega por el.
     """
     valor_minimo = 0
-    valor_maximo = 8
+    valor_maximo = 10
     opcion = -1
     while opcion != 0:
         menu_grafico()
@@ -63,10 +64,14 @@ def menu():
                 # Funcion Listar juegos de Nintendo
                 ct.control(6)
             elif opcion == 7:
-                print("Opcion 7: Listar los 5 juegos mas vendidos en NA.\n")
-                # Funcion Listar juegos de Nintendo
+                print("Opcion 7: Listar los 5 juegos mas vendidos en cada region.\n")
+                # Funcion Listar 5 juegos mas vendidos de cada region
                 ct.control(7)
             elif opcion == 8:
-                print("[8] Listar los 25 juegos usando pandas\n")
+                print("Opcion 8 Listar los 25 juegos usando pandas\n")
                 # Funcion listar juegos pandas
                 ct.control(8)
+            elif opcion == 10:
+                print("Opcion 10: Borrar un juego de la base de datos\n")
+                # Funcion borrar juego
+                ct.control(10)
