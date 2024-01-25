@@ -100,21 +100,48 @@ def listar_top(lugar):
     return lista_juegos
 
 def borrar_juego(juego):
-    cursor = conexion.cursor()
-    query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juego))
-    cursor.execute(query)
-    cursor.close
-    print("Juego eliminado")
+    """
+    Funcion borrar juego de la bbdd.
+
+    Args:
+        juego (int): Ranking del juego a borrar
+    """
+    try:
+        cursor = conexion.cursor()
+        query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juego))
+        cursor.execute(query)
+        # conexion.commit() #Guarda los cambios en la bbdd
+    except Exception as e:
+        print(f"Error al borrar el juego: {e}")
+    finally:
+        cursor.close()
+        print("Juego eliminado")
 
 def filter_years_even():
+    """
+    Funcion devuelve la lista de juegos publicados en años pares.
 
+    Returns:
+        list: lista de juegos publicados en años pares
+    """
     lista_juegos = []
     cursor = conexion.cursor()
-    query = ("SELECT * FROM Juegos WHERE year%2=0")
-    cursor.execute(query)
-    for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
-        juego = Juegos(name, platform, year, genre, publisher, na_Sales,
-                       eu_sales, jp_sales, other_sales, global_sales, rank)
-        lista_juegos.append(juego)
-    cursor.close
+
+    try:
+        # Utilizar parámetros de sustitución en lugar de formateo de cadena directo
+        query = "SELECT * FROM Juegos WHERE year % 2 = 0"
+        cursor.execute(query)
+
+        for row in cursor:
+            id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales = row
+            juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                           eu_sales, jp_sales, other_sales, global_sales, rank)
+            lista_juegos.append(juego)
+
+    except Exception as e:
+        print(f"Error al filtrar juegos: {e}")
+
+    finally:
+        cursor.close()
+
     return lista_juegos

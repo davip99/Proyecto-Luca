@@ -77,6 +77,6 @@ def menu():
                 # Funcion borrar juego
                 ct.control(10)
             elif opcion == 11:
-                print("Opcion 11: Listar los juegos publicados en años pares")
+                print("Opcion 11: Listar los juegos publicados en años pares\n")
                 # Funcion listar juegos de años pares
                 ct.control(11)

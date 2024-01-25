@@ -72,6 +72,7 @@ def control(action):
             print(juego)
 
     elif action == 7:
+        # Listar los 5 juegos mas vendidos en una region
         try:
             lugar = util.input_int("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
             if lugar == 1:
@@ -96,13 +97,22 @@ def control(action):
             print(e)
     
     elif action == 8:
+        # Listar los 25 primeros juegos con pandas
         jpandas.csv_pandas()
     
     elif action == 10:
-        juego = util.input_int("Introduce el rank del juego que quieres eliminar: ")
-        bbdd.borrar_juego(juego)
-
+        # Eliminar un juego de la bbdd
+        try:
+            juego = util.input_int("Introduce el rank del juego que quieres eliminar: ")
+            if juego < 0:
+                raise ValueError("Valor fuera de rango")
+            else:
+                bbdd.borrar_juego(juego)
+        except ValueError as e:
+            print(e)
+        
     elif action == 11:
+        # Listar juegos publicados en años pares
         lista_juegos = bbdd.filter_years_even()
         for juego in lista_juegos:
             print(juego)
