@@ -6,7 +6,7 @@ import src.util as util
 
 class Juegos:
 
-    def __init__(self, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank=0):
+    def __init__(self, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales, rank=0, id=0):
         """
         Constructor de la clase Juegos.
 
@@ -34,6 +34,7 @@ class Juegos:
         self.other_sales = other_sales
         self.global_sales = global_sales
         self.rank = rank
+        self.id = id
 
     def __str__(self):
         """
