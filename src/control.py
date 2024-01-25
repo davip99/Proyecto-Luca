@@ -8,6 +8,25 @@ import bbdd
 milista = lj("src/csv/vgsales.csv")
 
 
+def mostrar_datos(lista_juegos, lugar_str):
+    """
+    Funcion muestra los juegos de un lugar
+
+    Args:
+        lista_juegos (list): lista de los jeugos
+        lugar_str (str): lugar
+    """
+    for juego in lista_juegos:
+            print(f"Rank: {juego[0]}")
+            print(f"Nombre: {juego[1]}")
+            print(f"Plataforma: {juego[2]}")
+            print(f"Año: {juego[3]}")
+            print(f"Género: {juego[4]}")
+            print(f"Publisher: {juego[5]}")
+            print(f"{lugar_str}: {juego[6]}")
+            print("-" * 20)
+
+
 def control(action):
     """
     Función de control:
@@ -56,27 +75,21 @@ def control(action):
         if lugar == 1:
             lista_juegos = bbdd.listar_top(lugar='na_sales')
             lugar_str = 'Ventas NA'
+            mostrar_datos(lista_juegos, lugar_str)
         elif lugar == 2:
             lista_juegos = bbdd.listar_top(lugar='eu_sales')
             lugar_str = 'Ventas EU'
+            mostrar_datos(lista_juegos, lugar_str)
         elif lugar == 3:
             lista_juegos = bbdd.listar_top(lugar='jp_sales')
             lugar_str = 'Ventas JP'
+            mostrar_datos(lista_juegos, lugar_str)
         elif lugar == 4:
             lista_juegos = bbdd.listar_top(lugar='global_sales')
             lugar_str = 'Ventas GLOBAL'
+            mostrar_datos(lista_juegos, lugar_str)
         else:
             print("Valor fuera fuera de rango")
-
-        for juego in lista_juegos:
-            print(f"Rank: {juego[0]}")
-            print(f"Nombre: {juego[1]}")
-            print(f"Plataforma: {juego[2]}")
-            print(f"Año: {juego[3]}")
-            print(f"Género: {juego[4]}")
-            print(f"Publisher: {juego[5]}")
-            print(f"{lugar_str}: {juego[6]}")
-            print("-" * 20)
     
     elif action == 8:
         jpandas.csv_pandas()
