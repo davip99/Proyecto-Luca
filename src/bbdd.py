@@ -105,3 +105,16 @@ def borrar_juego(juego):
     cursor.execute(query)
     cursor.close
     print("Juego eliminado")
+
+def filter_years_even():
+
+    lista_juegos = []
+    cursor = conexion.cursor()
+    query = ("SELECT * FROM Juegos WHERE year%2=0")
+    cursor.execute(query)
+    for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+        juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                       eu_sales, jp_sales, other_sales, global_sales, rank)
+        lista_juegos.append(juego)
+    cursor.close
+    return lista_juegos

@@ -99,5 +99,10 @@ def control(action):
         jpandas.csv_pandas()
     
     elif action == 10:
-        juego = util.input_int("Introduce el rank del juego que quieres eliminar")
+        juego = util.input_int("Introduce el rank del juego que quieres eliminar: ")
         bbdd.borrar_juego(juego)
+
+    elif action == 11:
+        lista_juegos = bbdd.filter_years_even()
+        for juego in lista_juegos:
+            print(juego)
