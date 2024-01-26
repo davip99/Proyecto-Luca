@@ -87,3 +87,10 @@ def datos_vacios(name, platform, year, genre, publisher):
     if resultado == False:
         raise ValueError("Error, datos obligatorios vacios")
     return resultado
+
+
+def umbral(vector, corte):
+    for valor in vector:
+        if valor < corte:
+            return False
+    return True
