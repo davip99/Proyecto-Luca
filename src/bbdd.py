@@ -190,3 +190,22 @@ def actualizar(juego, new_juego):
     cursor.execute(query2)
     conexion.commit()
     cursor.close()
+
+def juegos_media(lugar):
+    """
+    Recoge los juegos con media mas alta del lugar
+
+    Args:
+        lugar (str): lugar especificado
+
+    Returns:
+        list: lista de juegos
+    """
+    lista_juegos = []
+    cursor = conexion.cursor()
+    query = (f"SELECT `rank`, `name`, `platform`, `year`, `genre`, `publisher`, `{lugar}` FROM `Juegos` WHERE {lugar} > (SELECT AVG({lugar}) FROM `Juegos`) ORDER BY {lugar} desc;")
+    cursor.execute(query)
+    for row in cursor:
+        lista_juegos.append(row)
+    cursor.close()
+    return lista_juegos
