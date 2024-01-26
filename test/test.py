@@ -113,6 +113,11 @@ class PruebaTestFixture(unittest.TestCase):
         valores_ventas = sorted(valores_ventas, reverse=True)
         self.assertEqual(top_na_sales, valores_ventas[:5])
         print("\nLos valores de ventas estan correctamente ordenados\n")
+    
+    def test_game_atribute_null_update(self):
+        self.assertIsInstance(game.create_game("a","Wii",2006,"Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
+        self.assertNotIsInstance(game.create_game(" ","Wii",2006,"Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
+        print("\nError al introducir un juego con atributos null\n")
         
 
 if __name__ == '__main__':
