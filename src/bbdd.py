@@ -2,6 +2,7 @@ import mysql.connector
 from Juegos import Juegos
 import configparser
 
+# recoge los datos del config.properties para la conexion a la bbdd
 config = configparser.ConfigParser()
 config.read("src/csv/config.properties")
 
@@ -11,6 +12,7 @@ host = config.get("BBDD", "host")
 database = config.get("BBDD", "database")
 port = config.get("BBDD", "port")
 
+# Conexion a la bbdd
 conexion = mysql.connector.connect(
     user=user, password=password, host=host, database=database, port=port)
 
@@ -115,7 +117,7 @@ def borrar_juego(juegos):
             juego = Juegos(name, platform, year, genre, publisher, na_Sales,
                            eu_sales, jp_sales, other_sales, global_sales, rank, id)
         borrar = input(f'¿Quiere borrar el juego: {juego}? \nY/N:')
-        if borrar =="Y":
+        if borrar == "Y":
             query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juegos))
             cursor.execute(query)
             # conexion.commit() #Guarda los cambios en la bbdd
