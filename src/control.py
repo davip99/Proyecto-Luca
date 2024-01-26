@@ -163,4 +163,21 @@ def control(action):
 
     elif action == 12:
         # Listar juegos con ventas por encima de la media en el lugar de referencia
-        pass
+        try:
+            lugar = util.input_int("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
+            if lugar == 1:
+                lista_juegos = bbdd.juegos_media(lugar='na_sales')
+                mostrar_datos(lista_juegos, 'Ventas NA')
+            elif lugar == 2:
+                lista_juegos = bbdd.juegos_media(lugar='eu_sales')
+                mostrar_datos(lista_juegos, 'Ventas EU')
+            elif lugar == 3:
+                lista_juegos = bbdd.juegos_media(lugar='jp_sales')
+                mostrar_datos(lista_juegos, 'Ventas JP')
+            elif lugar == 4:
+                lista_juegos = bbdd.juegos_media(lugar='global_sales')
+                mostrar_datos(lista_juegos, 'Ventas GLOBAL')
+            else:
+                raise ValueError("Valor fuera de rango")
+        except ValueError as e:
+            print(e)
