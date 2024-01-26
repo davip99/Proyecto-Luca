@@ -121,7 +121,26 @@ class PruebaTestFixture(unittest.TestCase):
 
     def test_borrar_juego(self):
         self.assertTrue(src.bbdd.borrar_juego(99999999999999) == False)
-        
+    
+    def test_games_years_odd(self):
+        par = True
+        lista_juegos = src.bbdd.filter_years_even()
+        for juego in lista_juegos:
+            if juego.year%2!=0:
+                par = False
+        self.assertTrue(par)
+        print("\nLos juegos estan publicados en años pares\n")
+
+    def test_juegos_media(self):
+        ventas = []
+        for juego in src.lista_juegos.Lista_Juegos("../src/csv/vgsales.csv").lista_csv:
+            ventas.append(juego.eu_sales)
+        ventas_media = sum(ventas)/len(ventas)
+        ventas_recogidas = []
+        for juego in src.bbdd.juegos_media("eu_sales"):
+            ventas_recogidas.append(juego[-1])
+        self.assertTrue(src.util.umbral(ventas_recogidas, ventas_media))
+        print("No hay juegos por debajo de la media")
 
 if __name__ == '__main__':
     unittest.main()

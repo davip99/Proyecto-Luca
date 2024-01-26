@@ -1,5 +1,5 @@
 import mysql.connector
-from Juegos import Juegos
+from src.Juegos import Juegos
 import configparser
 
 # recoge los datos del config.properties para la conexion a la bbdd
@@ -198,8 +198,7 @@ def actualizar(juego, new_juego):
         new_juego (Juego): juego nuevo
     """
     cursor = conexion.cursor()
-    query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={
-        new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
+    query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
     cursor.execute(query2)
     conexion.commit()
     cursor.close()
@@ -217,8 +216,7 @@ def juegos_media(lugar):
     """
     lista_juegos = []
     cursor = conexion.cursor()
-    query = (f"SELECT `rank`, `name`, `platform`, `year`, `genre`, `publisher`, `{
-             lugar}` FROM `Juegos` WHERE {lugar} > (SELECT AVG({lugar}) FROM `Juegos`) ORDER BY {lugar} desc;")
+    query = (f"SELECT `rank`, `name`, `platform`, `year`, `genre`, `publisher`, `{lugar}` FROM `Juegos` WHERE {lugar} > (SELECT AVG({lugar}) FROM `Juegos`) ORDER BY {lugar} desc;")
     cursor.execute(query)
     for row in cursor:
         lista_juegos.append(row)
