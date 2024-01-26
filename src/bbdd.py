@@ -99,7 +99,7 @@ def listar_top(lugar):
     cursor.close()
     return lista_juegos
 
-def borrar_juego(juego):
+def borrar_juegardo(juegos):
     """
     Funcion borrar juego de la bbdd.
 
@@ -108,14 +108,23 @@ def borrar_juego(juego):
     """
     try:
         cursor = conexion.cursor()
-        query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juego))
+        query = ("SELECT * FROM Juegos WHERE `rank` = {};".format(juegos))
         cursor.execute(query)
-        # conexion.commit() #Guarda los cambios en la bbdd
+        for id, rank, name, platform, year, genre, publisher, na_Sales, eu_sales, jp_sales, other_sales, global_sales in cursor:
+            juego = Juegos(name, platform, year, genre, publisher, na_Sales,
+                           eu_sales, jp_sales, other_sales, global_sales, rank, id)
+        borrar = input(f'¿Quiere borrar el juego: {juego}? \nY/N:')
+        if borrar =="Y":
+            query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juegos))
+            cursor.execute(query)
+            # conexion.commit() #Guarda los cambios en la bbdd
+            print("Juego eliminado")
+        else:
+            print("Juego no eliminado")
     except Exception as e:
-        print(f"Error al borrar el juego: {e}")
+        print(f"Error al borrar el juego: {e}\nJuego no eliminado")
     finally:
         cursor.close()
-        print("Juego eliminado")
 
 def filter_years_even():
     """
