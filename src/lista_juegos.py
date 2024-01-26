@@ -27,8 +27,7 @@ class Lista_Juegos:
         """
         Lee la lista de juegos y la imprime.
         """
-        # imprime 655 valores, cambiarlo al final
-        for juego in self.lista_csv[:655]:
+        for juego in self.lista_csv:
             print(juego)
 
     def exist(self, juego):
@@ -51,7 +50,7 @@ class Lista_Juegos:
             generos: una lista con los distintos generos.
         """
         generos = []
-        for juego in self.lista_csv[:10]:
+        for juego in self.lista_csv:
             if not juego.genre in generos:
                 generos.append(juego.genre)
         return generos
@@ -64,7 +63,7 @@ class Lista_Juegos:
             genero: Genero indicado por el usuario.
         """
         juegos_filtrados = []
-        for juego in self.lista_csv[:10]:
+        for juego in self.lista_csv:
             if genero == juego.genre:
                 # print(juego)
                 juegos_filtrados.append(juego)
