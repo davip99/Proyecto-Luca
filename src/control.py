@@ -117,11 +117,12 @@ def control(action):
                     print(juego)
                 index = util.input_int(
                     "Existen varios juegos con el mismo nombre elige una opcion: ")
-                if ((index) > len(lista_juegos)) and ((index) < len(lista_juegos)):
+                if (index < 1) or (index > len(lista_juegos)):
                     raise ValueError("Valor fuera de rango")
                 else:
                     print(f"opcion {index}")
                     juego = lista_juegos[index-1]
+                    print(juego)
             else:
                 juego = lista_juegos[0]
                 print(juego)
