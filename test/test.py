@@ -118,6 +118,9 @@ class PruebaTestFixture(unittest.TestCase):
         self.assertIsInstance(game.create_game("a","Wii",2006,"Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         self.assertNotIsInstance(game.create_game(" ","Wii",2006,"Sports","Nintendo",41.49,29.02,3.77,8.46,82.74), game)
         print("\nError al introducir un juego con atributos null\n")
+
+    def test_borrar_juego(self):
+        self.assertTrue(src.bbdd.borrar_juego(99999999999999) == False)
         
 
 if __name__ == '__main__':
