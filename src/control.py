@@ -1,11 +1,12 @@
+import sys
+from pathlib import Path
+sys.path.append(str(Path(__file__).resolve().parent.parent))
 import bbdd
 from src.Juegos import Juegos
 import src.util as util
 import src.juegos_pandas as jpandas
 from src.lista_juegos import Lista_Juegos as lj
-import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).resolve().parent.parent))
+
 
 milista = lj("src/csv/vgsales.csv")
 
