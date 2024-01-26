@@ -1,11 +1,11 @@
+import bbdd
+from src.Juegos import Juegos
+import src.util as util
+import src.juegos_pandas as jpandas
+from src.lista_juegos import Lista_Juegos as lj
 import sys
 from pathlib import Path
 sys.path.append(str(Path(__file__).resolve().parent.parent))
-from src.lista_juegos import Lista_Juegos as lj
-import src.juegos_pandas as jpandas
-import src.util as util
-from src.Juegos import Juegos
-import bbdd
 
 milista = lj("src/csv/vgsales.csv")
 
@@ -19,14 +19,14 @@ def mostrar_datos(lista_juegos, lugar_str):
         lugar_str (str): lugar
     """
     for juego in lista_juegos:
-            print(f"Rank: {juego[0]}")
-            print(f"Nombre: {juego[1]}")
-            print(f"Plataforma: {juego[2]}")
-            print(f"Año: {juego[3]}")
-            print(f"Género: {juego[4]}")
-            print(f"Publisher: {juego[5]}")
-            print(f"{lugar_str}: {juego[6]}")
-            print("-" * 20)
+        print(f"Rank: {juego[0]}")
+        print(f"Nombre: {juego[1]}")
+        print(f"Plataforma: {juego[2]}")
+        print(f"Año: {juego[3]}")
+        print(f"Género: {juego[4]}")
+        print(f"Publisher: {juego[5]}")
+        print(f"{lugar_str}: {juego[6]}")
+        print("-" * 20)
 
 
 def control(action):
@@ -75,7 +75,8 @@ def control(action):
     elif action == 7:
         # Listar los 5 juegos mas vendidos en una region
         try:
-            lugar = util.input_int("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
+            lugar = util.input_int(
+                "Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
             if lugar == 1:
                 lista_juegos = bbdd.listar_top(lugar='na_sales')
                 lugar_str = 'Ventas NA'
@@ -96,13 +97,13 @@ def control(action):
                 raise ValueError("Valor fuera de rango")
         except ValueError as e:
             print(e)
-    
+
     elif action == 8:
         # Listar los 25 primeros juegos con pandas
         jpandas.csv_pandas()
-    
+
     elif action == 9:
-        #Actualizar juego
+        # Actualizar juego
         try:
             nombre = util.input_obligatorio(
                 "Introduce nombre del juego que deseas modificar: ")
@@ -123,7 +124,7 @@ def control(action):
             else:
                 juego = lista_juegos[0]
                 print(juego)
-                
+
             print("Introduce el nuevo juego a modificar")
             new_juego = Juegos.new_game()
             print("Juego antiguo:")
@@ -147,14 +148,15 @@ def control(action):
     elif action == 10:
         # Eliminar un juego de la bbdd
         try:
-            juego = util.input_int("Introduce el rank del juego que quieres eliminar: ")
+            juego = util.input_int(
+                "Introduce el rank del juego que quieres eliminar: ")
             if juego < 0:
                 raise ValueError("Valor fuera de rango")
             else:
                 bbdd.borrar_juego(juego)
         except ValueError as e:
             print(e)
-        
+
     elif action == 11:
         # Listar juegos publicados en años pares
         lista_juegos = bbdd.filter_years_even()
@@ -164,7 +166,8 @@ def control(action):
     elif action == 12:
         # Listar juegos con ventas por encima de la media en el lugar de referencia
         try:
-            lugar = util.input_int("Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
+            lugar = util.input_int(
+                "Elige una opcion: 1.NA, 2.EU, 3.JP, 4.GLOBAL ")
             if lugar == 1:
                 lista_juegos = bbdd.juegos_media(lugar='na_sales')
                 mostrar_datos(lista_juegos, 'Ventas NA')

@@ -99,6 +99,7 @@ def listar_top(lugar):
     cursor.close()
     return lista_juegos
 
+
 def borrar_juego(juegos):
     """
     Funcion borrar juego de la bbdd.
@@ -114,7 +115,7 @@ def borrar_juego(juegos):
             juego = Juegos(name, platform, year, genre, publisher, na_Sales,
                            eu_sales, jp_sales, other_sales, global_sales, rank, id)
         borrar = input(f'¿Quiere borrar el juego: {juego}? \nY/N:')
-        if borrar =="Y":
+        if borrar == "Y":
             query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juegos))
             cursor.execute(query)
             # conexion.commit() #Guarda los cambios en la bbdd
@@ -125,6 +126,7 @@ def borrar_juego(juegos):
         print(f"Error al borrar el juego: {e}\nJuego no eliminado")
     finally:
         cursor.close()
+
 
 def filter_years_even():
     """
@@ -155,6 +157,7 @@ def filter_years_even():
 
     return lista_juegos
 
+
 def buscar_nombre(nombre):
     """
     Funcion devuelve la lista de juegos con el nombre especificado.
@@ -177,6 +180,7 @@ def buscar_nombre(nombre):
     cursor.close()
     return lista_juegos
 
+
 def actualizar(juego, new_juego):
     """
     Actualiza el juego con uno nuevo en la bbdd
@@ -186,10 +190,12 @@ def actualizar(juego, new_juego):
         new_juego (Juego): juego nuevo
     """
     cursor = conexion.cursor()
-    query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
+    query2 = f"UPDATE `Juegos` SET `name`='{new_juego.name}', `platform`='{new_juego.platform}', `year`={new_juego.year}, `genre`='{new_juego.genre}', `publisher`='{new_juego.publisher}', `na_Sales`={
+        new_juego.na_Sales}, `eu_sales`={new_juego.eu_sales}, `jp_sales`={new_juego.jp_sales}, `other_sales`={new_juego.other_sales}, `global_sales`={new_juego.global_sales} WHERE id = {juego.id};"
     cursor.execute(query2)
     conexion.commit()
     cursor.close()
+
 
 def juegos_media(lugar):
     """
@@ -203,7 +209,8 @@ def juegos_media(lugar):
     """
     lista_juegos = []
     cursor = conexion.cursor()
-    query = (f"SELECT `rank`, `name`, `platform`, `year`, `genre`, `publisher`, `{lugar}` FROM `Juegos` WHERE {lugar} > (SELECT AVG({lugar}) FROM `Juegos`) ORDER BY {lugar} desc;")
+    query = (f"SELECT `rank`, `name`, `platform`, `year`, `genre`, `publisher`, `{
+             lugar}` FROM `Juegos` WHERE {lugar} > (SELECT AVG({lugar}) FROM `Juegos`) ORDER BY {lugar} desc;")
     cursor.execute(query)
     for row in cursor:
         lista_juegos.append(row)
