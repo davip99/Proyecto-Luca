@@ -1,5 +1,5 @@
 import mysql.connector
-from src.Juegos import Juegos
+from Juegos import Juegos
 import configparser
 
 config = configparser.ConfigParser()
