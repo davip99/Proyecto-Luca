@@ -121,7 +121,15 @@ class PruebaTestFixture(unittest.TestCase):
 
     def test_borrar_juego(self):
         self.assertTrue(src.bbdd.borrar_juego(99999999999999) == False)
-        
+    
+    def test_games_years_odd(self):
+        par = True
+        lista_juegos = src.bbdd.filter_years_even()
+        for juego in lista_juegos:
+            if juego.year%2!=0:
+                par = False
+        self.assertTrue(par)
+        print("\nLos juegos estan publicados en años pares\n")
 
 if __name__ == '__main__':
     unittest.main()
