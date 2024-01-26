@@ -115,15 +115,21 @@ def borrar_juego(juegos):
             juego = Juegos(name, platform, year, genre, publisher, na_Sales,
                            eu_sales, jp_sales, other_sales, global_sales, rank, id)
         borrar = input(f'¿Quiere borrar el juego: {juego}? \nY/N:')
-        if borrar == "Y":
+        if borrar =="Y":
             query = ("DELETE FROM Juegos WHERE `rank` = {};".format(juegos))
             cursor.execute(query)
             # conexion.commit() #Guarda los cambios en la bbdd
             print("Juego eliminado")
+            borrado = True
+            return borrado
         else:
             print("Juego no eliminado")
+            borrado = False
+            return borrado
     except Exception as e:
         print(f"Error al borrar el juego: {e}\nJuego no eliminado")
+        borrado = False
+        return borrado
     finally:
         cursor.close()
 
