@@ -99,7 +99,7 @@ def listar_top(lugar):
     cursor.close()
     return lista_juegos
 
-def borrar_juegardo(juegos):
+def borrar_juego(juegos):
     """
     Funcion borrar juego de la bbdd.
 
